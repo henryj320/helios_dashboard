@@ -1,5 +1,5 @@
 # react_dashboard
-Last update: 2023-01-12 23:08
+Last update: 2023-02-06 23:10
 <br><br>
 
 ## Changelog for react_dashboard
@@ -169,3 +169,6 @@ SyntaxError: Unexpected token (53:40)
     -  xs, sm, md, lg, and xl
     - Change styling based on size
 27. Closing branch "feature/running_react_template".
+28. Testing that react_dashboard still runs with python_projects split into separate repos
+    - ` npm start `
+    - Wow, that just worked. Great stuff!
