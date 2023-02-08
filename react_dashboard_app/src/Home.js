@@ -20,12 +20,16 @@ const Item = styled(Paper)(({ theme }) => ({
 const ItemHeaderProperties = {
     position: 'relative',
     textAlign: 'right',
-    width: '50%',
-    left: {sm: '1rem', lg: '11rem'},
-    top: {sm: '-14.5rem', lg: '5.5rem'},
+    width: '75%',
+    left: {sm: '1rem', lg: '11rem', xl: '5rem'},
+    top: {sm: '-14.5rem', lg: '5.5rem', xl: '7rem'},
     border: 0,
-    fontSize: 12,
-    boxShadow: 0
+    fontSize: 20,
+    boxShadow: 0,
+    "&:hover": {
+        // Add what happens on hover
+        cursor: 'pointer'
+    },
 }
 
 const ItemImageProperties = {
@@ -36,7 +40,7 @@ const ItemImageProperties = {
     top: {sm: '-14.5rem', lg: '-15.5rem'},
     borderRadius: 2,
     boxShadow: 2,
-    border: {xs: '1px solid lightgrey', md: '1px solid red'},
+    border: {xs: '1px solid lightgrey', sm: '1px solid red', md: '1px solid green', lg: '1px solid blue', xl: '1px solid purple'},
     zIndex: 0,
     background: 'lightblue',
 }
@@ -48,7 +52,11 @@ const ItemProperties = {
     minHeight: '100px',
     paddingTop: {sm: '0%', lg: '23%'},
     paddingLeft: '1.5rem',
-    paddingRight: '1.5rem'
+    paddingRight: '1.5rem',
+    "&:hover": {
+        // Add what happens on hover
+        cursor: 'pointer'
+    },
 }
 
 export const Home = () => {
@@ -59,25 +67,62 @@ export const Home = () => {
                 <Grid container spacing={4} sx={{
                     marginLeft: '5%',
                     maxWidth: '90%',
+                    marginRight: '5%',
                     gap: 2
                 }}>
-                    
-                    <Grid item xs={4}>
+
+                    <Grid item xs={3.9}>
                         <Item sx={ItemHeaderProperties}>
-                            <h2>Hey! asd asd</h2>
+                            <h2>Muscle Checker</h2>
                         </Item>
                         <Item sx={ItemProperties}>
                             <hr></hr>
-                            <p>Helloooo fif dsff fds dsf dsfds fdsf dsf dsf dsf dsf fif dsff fds dsf dsfds fdsf dsf dsf dsf dsf fif dsff fds dsf dsfds fdsf dsf dsf dsf dsf </p>
+                            <p>Outputs which of the main muscles you missed this week and what exercises you could do to train them.</p>
                         </Item>
                         <Item sx={ItemImageProperties}>
                             <img src={logo} alt="Logo" id="firstImage"/>
                         </Item>
-                        
                     </Grid>
-                    <Grid item xs={4}>
-                        <Item><p>Hello</p></Item>
+
+                    <Grid item xs={3.9}>
+                        <Item sx={ItemHeaderProperties}>
+                            <h2>Gym Calendar</h2>
+                        </Item>
+                        <Item sx={ItemProperties}>
+                            <hr></hr>
+                            <p>Generates a weeks worth of gym exercises given a form input.</p>
+                        </Item>
+                        <Item sx={ItemImageProperties}>
+                            <img src={logo} alt="Logo" id="firstImage"/>
+                        </Item>
                     </Grid>
+
+                    <Grid item xs={3.9}>
+                        <Item sx={ItemHeaderProperties}>
+                            <h2>GitHub</h2>
+                        </Item>
+                        <Item sx={ItemProperties}>
+                            <hr></hr>
+                            <p>A link to my GitHub Repositories.</p>
+                        </Item>
+                        <Item sx={ItemImageProperties}>
+                            <img src={logo} alt="Logo" id="firstImage"/>
+                        </Item>
+                    </Grid>
+
+                    {/* <Grid item xs={11.9}>
+                        <Item sx={ItemHeaderProperties}>
+                            <h2>GitHub</h2>
+                        </Item>
+                        <Item sx={ItemProperties}>
+                            <hr></hr>
+                            <p>A link to my GitHub Repositories.</p>
+                        </Item>
+                        <Item sx={ItemImageProperties}>
+                            <img src={logo} alt="Logo" id="firstImage"/>
+                        </Item>
+                    </Grid> */}
+
                 </Grid>
             </div>
             

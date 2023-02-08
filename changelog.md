@@ -172,3 +172,10 @@ SyntaxError: Unexpected token (53:40)
 28. Testing that react_dashboard still runs with python_projects split into separate repos
     - ` npm start `
     - Wow, that just worked. Great stuff!
+29. ` sudo apt update ` and `sudo apt upgrade ` on the RPi.
+    - Its been a while.
+30. Learning making a moving .svg
+    - Complicated. I'll work on it at a later point.
+31. Add the static content for the page
+    - Adding the first 3 - Muscle Checker, Gym Calendar and GitHub
+        - Focus on making it look good in size "xl" and then make it work for the other sizes.
