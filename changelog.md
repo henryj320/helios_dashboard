@@ -178,4 +178,10 @@ SyntaxError: Unexpected token (53:40)
     - Complicated. I'll work on it at a later point.
 31. Add the static content for the page
     - Adding the first 3 - Muscle Checker, Gym Calendar and GitHub
+        - Set sizes: xs, sm, md, lg, xl and xxl.
         - Focus on making it look good in size "xl" and then make it work for the other sizes.
+        - Making them look good in "lg".
+        - Making them look good in "md".
+        - Making them look good in "sm".
+        - Still not done for "xs" but unlikely to be needed yet.
+    - Added a background colour to the Grid Items.
