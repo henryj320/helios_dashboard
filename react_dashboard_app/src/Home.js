@@ -9,6 +9,8 @@ import Grid from '@mui/material/Grid';
 import logo from './assets/images/flask_favicon.png'
 import { fontSize } from '@mui/system';
 
+import Rpi_health from './components/Rpi_health/Rpi_health';
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -22,7 +24,7 @@ const ItemHeaderProperties = {
     textAlign: {sm: 'center', md: 'left', lg: 'right'},
     width: '75%',
     left: {sm: '1rem', md: '1rem', lg: '3rem', xl: '4rem'},
-    top: {sm: '5.3rem', md: '4.6rem', lg: '4.9rem', xl: '6.4rem'},
+    top: {sm: '5.3rem', md: '4.6rem', lg: '4.9rem', xl: '7rem'},
     border: 0,
     fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
     boxShadow: 0,
@@ -35,11 +37,11 @@ const ItemHeaderProperties = {
 
 const ItemImageProperties = {
     display: {sm: 'none', md: 'none', lg: 'block'},
-    width: {sm: '1rem', md: '1rem', lg: '4rem', xl: '6rem'},
-    height: {sm: '1rem', md: '1rem', lg: '4rem', xl: '6rem'},
+    width: {sm: '1rem', md: '1rem', lg: '4rem', xl: '7rem'},
+    height: {sm: '1rem', md: '1rem', lg: '4rem', xl: '7rem'},
     position: 'relative',
     left: {sm: '1rem', lg: '1.5rem'},
-    top: {sm: '-14.5rem', md: '-9rem', lg: '-11.5rem', xl: '-13rem'},
+    top: {sm: '-14.5rem', md: '-9rem', lg: '-11.5rem', xl: '-14.5rem'},
     borderRadius: 2,
     boxShadow: 2,
     border: {xs: '1px solid lightgrey', sm: '1px solid red', md: '1px solid green', lg: '1px solid blue', xl: '1px solid purple', xxl: '1px solid yellow'},
@@ -56,7 +58,7 @@ const ItemProperties = {
     paddingLeft: '1.5rem',
     paddingRight: '1.5rem',
     fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
-    background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
+    // background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
     "&:hover": {
         // Add what happens on hover
         cursor: 'pointer',
@@ -127,6 +129,89 @@ export const Home = () => {
                             <img src={logo} alt="Logo" id="firstImage"/>
                         </Item>
                     </Grid> */}
+
+                    <Grid item xs={11.4} sx={{
+                        marginLeft: '1.7%',
+                        borderRadius: 2,
+                        boxShadow: 5,
+                        border: '1px solid lightgrey',
+                        minHeight: {sm: '30px', md: '80px', lg: '80px'},
+                        paddingTop: {sm: '35%', md: '30%', lg: '23%'},
+                        
+                        fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
+                        background: 'white',
+                        position: 'relative',
+                        top: '-6.5rem',
+                    }}>
+                        <Item sx={{
+                            fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
+                            position: 'relative',
+                            top: '-2rem',
+                            boxShadow: 0,
+                        }}>
+                            <h2>Raspberry Pi Health</h2>
+
+                        </Item>
+                        <Item sx={{
+                            position: 'relative',
+                            top: '-2rem',
+                            width: '95%',
+                            left: '1rem',
+                            top: '-3rem',
+                            boxShadow: 0,
+                        }}>
+
+                            <hr></hr>
+                        </Item>
+                        <Item sx={{
+                                // borderCollapse: 'collapse',
+                                // border: '1px solid black',
+                                // borderRadius: '5px',
+                                boxShadow: 0,
+                                textAlign: 'center',
+                                width: '100%',
+                                // left: '-1.5%',
+                                top: '-3rem',
+                                'position': 'relative',
+                                background: 'none',
+
+                                // table: {
+                                //     color: 'red',
+                                //     'width': '100%',
+                                //     borderCollapse: 'collapse',
+                                // },
+                                // th: {
+                                //     border: '1px solid black',
+                                //     borderBottom: 0,
+                                // },
+                                // td: {
+                                //     border: '1px solid black',
+                                //     borderTop: 0,
+                                // }
+
+                                ul: {
+                                    listStyleType: 'none',
+                                    width: '100%',
+                                },
+
+                                li: {
+                                    display: 'block',
+                                    float: 'left',
+                                    width: '11.8%',
+                                    marginLeft: '5%',
+                                    marginRight: '5%',
+                                    border: '1px solid lightgrey',
+                                    padding: '1%',
+                                    borderRadius: 2,
+                                    boxShadow: 3,
+                                    background: '#F5F5F5',
+                                }
+
+                            }}>
+                                
+                            <Rpi_health ></Rpi_health>
+                        </Item>
+                    </Grid>
 
                 </Grid>
             </div>
