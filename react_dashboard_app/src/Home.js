@@ -1,5 +1,4 @@
 import React from 'react'
-import Sidebar from './components/Sidebar'
 
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -12,6 +11,9 @@ import { fontSize } from '@mui/system';
 import Rpi_health from './components/Rpi_health/Rpi_health';
 
 import { Link } from 'react-router-dom'
+import Sidebar from './components/Sidebar/Sidebar';
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -48,7 +50,7 @@ const ItemImageProperties = {
     boxShadow: 2,
     border: {xs: '1px solid lightgrey', sm: '1px solid red', md: '1px solid green', lg: '1px solid blue', xl: '1px solid purple', xxl: '1px solid yellow'},
     zIndex: 0,
-    background: 'lightblue',
+    background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
 }
 
 const ItemProperties = {
@@ -64,19 +66,23 @@ const ItemProperties = {
     "&:hover": {
         // Add what happens on hover
         // cursor: 'pointer',
-        background: 'linear-gradient(to right bottom, grey, lightgrey)'
+        // background: 'linear-gradient(to right bottom, grey, lightgrey)'
+                        background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
     },
 }
 
 export const Home = () => {
  
     return (
-        <div>
-            <div >
+        <div class="float-container">
+
+            <Sidebar></Sidebar>
+
+            <div id="mainDiv">
                 <Grid container spacing={4} sx={{
-                    marginLeft: '5%',
-                    maxWidth: '90%',
-                    marginRight: '5%',
+                    marginLeft: '4%',
+                    maxWidth: '100%',
+                    marginRight: '0%',
                     gap: 2,
                 }}>
 

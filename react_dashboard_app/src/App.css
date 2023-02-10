@@ -23,9 +23,6 @@
   to { transform: rotate(360deg); }
 }
 
-#mainDiv {
-  box-shadow: '5px 10px #888888';
-}
 
 #firstImage {
   width: 100%;
@@ -51,4 +48,21 @@ html {
   font-weight: bold;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-decoration: none;
+}
+
+.float-container {
+  padding: 20px;
+}
+
+#sidebarDiv {
+  width: 17.5%;
+  float: left;
+  padding: 0px;
+}  
+
+
+#mainDiv {
+  width: 77%;
+  float: left;
+  padding: 20px;
 }

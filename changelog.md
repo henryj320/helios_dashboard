@@ -195,3 +195,9 @@ SyntaxError: Unexpected token (53:40)
     - Added links to them on the dashboard.
     - Fixed the text-decoration by removing it in App.css
 34. Adding a sidebar
+    - npm install react-pro-sidebar
+    - Nevermind, developed my own
+    - Need to fix the scaling
+    - Buttons are added but no links yet
+35. Converted the scaling to vw and vh
+    - Should help with the scaling
