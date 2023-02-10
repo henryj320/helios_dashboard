@@ -193,3 +193,5 @@ SyntaxError: Unexpected token (53:40)
     - npm install react-router-dom
     - Adding routes to index.js
     - Added links to them on the dashboard.
+    - Fixed the text-decoration by removing it in App.css
+34. Adding a sidebar

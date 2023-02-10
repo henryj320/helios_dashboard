@@ -63,7 +63,7 @@ const ItemProperties = {
     // background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
     "&:hover": {
         // Add what happens on hover
-        cursor: 'pointer',
+        // cursor: 'pointer',
         background: 'linear-gradient(to right bottom, grey, lightgrey)'
     },
 }
@@ -77,11 +77,11 @@ export const Home = () => {
                     marginLeft: '5%',
                     maxWidth: '90%',
                     marginRight: '5%',
-                    gap: 2
+                    gap: 2,
                 }}>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
-                        <Link to="/muscle_checker">
+                        <Link to="/muscle_checker" target="_blank">
                             <Item sx={ItemHeaderProperties}>
                                 <h2>Muscle Checker</h2>
                             </Item>
@@ -96,7 +96,7 @@ export const Home = () => {
                     </Grid>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
-                        <Link to="/gym_calendar">
+                        <Link to="/gym_calendar" target="_blank">
                             <Item sx={ItemHeaderProperties}>
                                 <h2>Gym Calendar</h2>
                             </Item>
