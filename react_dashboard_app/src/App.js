@@ -4,18 +4,23 @@ import './App.css';
 
 import { Home } from './Home'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1>Dashboard</h1>
-        </div>
-        <Home />
-      </div>
-    );
-  }
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import Muscle_checker from './pages/Muscle_checker';
+import Gym_calendar from './pages/Gym_calendar';
+
+
+
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/muscle_checker" element={<Muscle_checker />} />
+        <Route path="/gym_calendar" element={<Gym_calendar />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;

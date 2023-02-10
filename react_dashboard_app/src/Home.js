@@ -11,6 +11,8 @@ import { fontSize } from '@mui/system';
 
 import Rpi_health from './components/Rpi_health/Rpi_health';
 
+import { Link } from 'react-router-dom'
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -79,29 +81,33 @@ export const Home = () => {
                 }}>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
-                        <Item sx={ItemHeaderProperties}>
-                            <h2>Muscle Checker</h2>
-                        </Item>
-                        <Item sx={ItemProperties}>
-                            <hr></hr>
-                            <p>Check which muscles you missed this week.</p>
-                        </Item>
-                        <Item sx={ItemImageProperties}>
-                            <img src={logo} alt="Logo" id="firstImage"/>
-                        </Item>
+                        <Link to="/muscle_checker">
+                            <Item sx={ItemHeaderProperties}>
+                                <h2>Muscle Checker</h2>
+                            </Item>
+                            <Item sx={ItemProperties}>
+                                <hr></hr>
+                                <p>Check which muscles you missed this week.</p>
+                            </Item>
+                            <Item sx={ItemImageProperties}>
+                                <img src={logo} alt="Logo" id="firstImage"/>
+                            </Item>
+                        </Link>
                     </Grid>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
-                        <Item sx={ItemHeaderProperties}>
-                            <h2>Gym Calendar</h2>
-                        </Item>
-                        <Item sx={ItemProperties}>
-                            <hr></hr>
-                            <p>Generate this week's workout plan.</p>
-                        </Item>
-                        <Item sx={ItemImageProperties}>
-                            <img src={logo} alt="Logo" id="firstImage"/>
-                        </Item>
+                        <Link to="/gym_calendar">
+                            <Item sx={ItemHeaderProperties}>
+                                <h2>Gym Calendar</h2>
+                            </Item>
+                            <Item sx={ItemProperties}>
+                                <hr></hr>
+                                <p>Generate this week's workout plan.</p>
+                            </Item>
+                            <Item sx={ItemImageProperties}>
+                                <img src={logo} alt="Logo" id="firstImage"/>
+                            </Item>
+                        </Link>
                     </Grid>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
@@ -130,8 +136,8 @@ export const Home = () => {
                         </Item>
                     </Grid> */}
 
-                    <Grid item xs={11.4} sx={{
-                        marginLeft: '1.7%',
+                    <Grid item sm={11.4} md={11.15} lg={11.45} xl={11.4} sx={{
+                        marginLeft: {sm: '2.0%', md: '3%', lg: '2.3%', xl: '2.0%'},
                         borderRadius: 2,
                         boxShadow: 5,
                         border: '1px solid lightgrey',
@@ -141,7 +147,7 @@ export const Home = () => {
                         fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
                         background: 'white',
                         position: 'relative',
-                        top: '-6.5rem',
+                        top: {sm: '1.5rem', md: '1.2rem', lg: '-4.5rem', xl: '-6.5rem'},
                     }}>
                         <Item sx={{
                             fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
@@ -172,7 +178,7 @@ export const Home = () => {
                                 width: '100%',
                                 // left: '-1.5%',
                                 top: '-3rem',
-                                'position': 'relative',
+                                position: 'relative',
                                 background: 'none',
 
                                 // table: {

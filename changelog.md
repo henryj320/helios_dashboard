@@ -185,3 +185,11 @@ SyntaxError: Unexpected token (53:40)
         - Making them look good in "sm".
         - Still not done for "xs" but unlikely to be needed yet.
     - Added a background colour to the Grid Items.
+32. Added Raspberry Pi Health
+    - Not completely happy with scaling
+    - Instead of using "rem", maybe try "vw" (viewpot width) amd "vh".
+        - I'll look into it more in the future.
+33. Making the Muscle Checker and Gym Calendar pages
+    - npm install react-router-dom
+    - Adding routes to index.js
+    - Added links to them on the dashboard.
