@@ -20,9 +20,9 @@ export default function Sidebar() {
             <Grid container spacing={0} sx={{
                 span: {
                     borderRadius: 2,
-                    padding: '8%',
+                    padding: '1.5vw',
                     display: 'block',
-                    marginTop: '10%',
+                    marginTop: '2.5vh',
                     border: 'none',
                     background: '#F5F5F5',
                     boxShadow: 3,

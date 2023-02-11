@@ -199,5 +199,6 @@ SyntaxError: Unexpected token (53:40)
     - Nevermind, developed my own
     - Need to fix the scaling
     - Buttons are added but no links yet
-35. Converted the scaling to vw and vh
-    - Should help with the scaling
+35. Converting the scaling to vw and vh.
+    - Should help with the scaling.
+    - "sm" isn't scaling well, but the rest are acceptable

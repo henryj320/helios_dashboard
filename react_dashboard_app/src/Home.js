@@ -26,9 +26,9 @@ const Item = styled(Paper)(({ theme }) => ({
 const ItemHeaderProperties = {
     position: 'relative',
     textAlign: {sm: 'center', md: 'left', lg: 'right'},
-    width: '75%',
-    left: {sm: '1rem', md: '1rem', lg: '3rem', xl: '4rem'},
-    top: {sm: '5.3rem', md: '4.6rem', lg: '4.9rem', xl: '7rem'},
+    width: '16.2vw',
+    left: {sm: '1vw', md: '2vw', lg: '3vw', xl: '3vw'},
+    top: {sm: '8vw', md: '7.4vw', lg: '6vw', xl: '6vw'},
     border: 0,
     fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
     boxShadow: 0,
@@ -41,11 +41,11 @@ const ItemHeaderProperties = {
 
 const ItemImageProperties = {
     display: {sm: 'none', md: 'none', lg: 'block'},
-    width: {sm: '1rem', md: '1rem', lg: '4rem', xl: '7rem'},
-    height: {sm: '1rem', md: '1rem', lg: '4rem', xl: '7rem'},
+    width: {lg: '4vw', xl: '5vw'},
+    height: {lg: '4vw', xl: '5vw'},
     position: 'relative',
-    left: {sm: '1rem', lg: '1.5rem'},
-    top: {sm: '-14.5rem', md: '-9rem', lg: '-11.5rem', xl: '-14.5rem'},
+    left: {lg: '1.8vw', xl: '1.3vw'},
+    top: {lg: '-12vw', xl: '-12vw'},
     borderRadius: 2,
     boxShadow: 2,
     border: {xs: '1px solid lightgrey', sm: '1px solid red', md: '1px solid green', lg: '1px solid blue', xl: '1px solid purple', xxl: '1px solid yellow'},
@@ -58,9 +58,9 @@ const ItemProperties = {
     boxShadow: 5,
     border: '1px solid lightgrey',
     minHeight: {sm: '30px', md: '80px', lg: '80px'},
-    paddingTop: {sm: '35%', md: '30%', lg: '23%'},
-    paddingLeft: '1.5rem',
-    paddingRight: '1.5rem',
+    paddingTop: {sm: '7vw', md: '6.2vw', lg: '5.2vw'},
+    paddingLeft: '1.3vw',
+    paddingRight: '1.3vw',
     fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
     // background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
     "&:hover": {
@@ -80,7 +80,7 @@ export const Home = () => {
 
             <div id="mainDiv">
                 <Grid container spacing={4} sx={{
-                    marginLeft: '4%',
+                    marginLeft: '2vw',
                     maxWidth: '100%',
                     marginRight: '0%',
                     gap: 2,
@@ -129,31 +129,19 @@ export const Home = () => {
                         </Item>
                     </Grid>
 
-                    {/* <Grid item xs={11.9}>
-                        <Item sx={ItemHeaderProperties}>
-                            <h2>GitHub</h2>
-                        </Item>
-                        <Item sx={ItemProperties}>
-                            <hr></hr>
-                            <p>A link to my GitHub Repositories.</p>
-                        </Item>
-                        <Item sx={ItemImageProperties}>
-                            <img src={logo} alt="Logo" id="firstImage"/>
-                        </Item>
-                    </Grid> */}
-
-                    <Grid item sm={11.4} md={11.15} lg={11.45} xl={11.4} sx={{
-                        marginLeft: {sm: '2.0%', md: '3%', lg: '2.3%', xl: '2.0%'},
+                    <Grid item sm={11.4} md={11.15} lg={11.4} xl={11.4} sx={{
+                        marginLeft: {sm: '2.0%', md: '3vw', lg: '2.25vw', xl: '1.7vw'},
                         borderRadius: 2,
                         boxShadow: 5,
                         border: '1px solid lightgrey',
-                        minHeight: {sm: '30px', md: '80px', lg: '80px'},
+                        minHeight: {sm: '28vw', md: '22vw', lg: '21vw', xl: '17vw'},
+                        maxHeight: {sm: '28vw', md: '22vw', lg: '21vw', xl: '17vw'},
                         paddingTop: {sm: '35%', md: '30%', lg: '23%'},
                         
                         fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
                         background: 'white',
                         position: 'relative',
-                        top: {sm: '1.5rem', md: '1.2rem', lg: '-4.5rem', xl: '-6.5rem'},
+                        top: {sm: '2vw', md: '1.5vw', lg: '-4vw', xl: '-5vw'},
                     }}>
                         <Item sx={{
                             fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
@@ -166,10 +154,8 @@ export const Home = () => {
                         </Item>
                         <Item sx={{
                             position: 'relative',
-                            top: '-2rem',
                             width: '95%',
-                            left: '1rem',
-                            top: '-3rem',
+                            top: '-3.5vw',
                             boxShadow: 0,
                         }}>
 
@@ -183,7 +169,7 @@ export const Home = () => {
                                 textAlign: 'center',
                                 width: '100%',
                                 // left: '-1.5%',
-                                top: '-3rem',
+                                top: '-3vw',
                                 position: 'relative',
                                 background: 'none',
 
@@ -209,14 +195,15 @@ export const Home = () => {
                                 li: {
                                     display: 'block',
                                     float: 'left',
-                                    width: '11.8%',
-                                    marginLeft: '5%',
-                                    marginRight: '5%',
+                                    width: {md: '6vw', lg: '7.5vw'},
+                                    marginLeft: '3vw',
+                                    marginRight: '3vw',
                                     border: '1px solid lightgrey',
                                     padding: '1%',
                                     borderRadius: 2,
                                     boxShadow: 3,
                                     background: '#F5F5F5',
+                                    // minHeight: '7vw',
                                 }
 
                             }}>
