@@ -172,3 +172,41 @@ SyntaxError: Unexpected token (53:40)
 28. Testing that react_dashboard still runs with python_projects split into separate repos
     - ` npm start `
     - Wow, that just worked. Great stuff!
+29. ` sudo apt update ` and `sudo apt upgrade ` on the RPi.
+    - Its been a while.
+30. Learning making a moving .svg
+    - Complicated. I'll work on it at a later point.
+31. Add the static content for the page
+    - Adding the first 3 - Muscle Checker, Gym Calendar and GitHub
+        - Set sizes: xs, sm, md, lg, xl and xxl.
+        - Focus on making it look good in size "xl" and then make it work for the other sizes.
+        - Making them look good in "lg".
+        - Making them look good in "md".
+        - Making them look good in "sm".
+        - Still not done for "xs" but unlikely to be needed yet.
+    - Added a background colour to the Grid Items.
+32. Added Raspberry Pi Health
+    - Not completely happy with scaling
+    - Instead of using "rem", maybe try "vw" (viewpot width) amd "vh".
+        - I'll look into it more in the future.
+33. Making the Muscle Checker and Gym Calendar pages
+    - npm install react-router-dom
+    - Adding routes to index.js
+    - Added links to them on the dashboard.
+    - Fixed the text-decoration by removing it in App.css
+34. Adding a sidebar
+    - npm install react-pro-sidebar
+    - Nevermind, developed my own
+    - Need to fix the scaling
+    - Buttons are added but no links yet
+35. Converting the scaling to vw and vh.
+    - Should help with the scaling.
+    - "sm" isn't scaling well, but the rest are acceptable
+    - Why not change Raspberry Pi Health to its own Grid?
+        - Maybe in future. Just a placeholder for now.
+36. TODO: Fix the thick bar issue and the images.
+    - Turns out the <hr> bars were invisible with just the border showing.
+    - Everything is now complete with the appearance except for the smaller scaling.
+        - Consider the scaling more carefully
+        - Complete change to the scale when the vw gets too low.
+
