@@ -202,3 +202,11 @@ SyntaxError: Unexpected token (53:40)
 35. Converting the scaling to vw and vh.
     - Should help with the scaling.
     - "sm" isn't scaling well, but the rest are acceptable
+    - Why not change Raspberry Pi Health to its own Grid?
+        - Maybe in future. Just a placeholder for now.
+36. TODO: Fix the thick bar issue and the images.
+    - Turns out the <hr> bars were invisible with just the border showing.
+    - Everything is now complete with the appearance except for the smaller scaling.
+        - Consider the scaling more carefully
+        - Complete change to the scale when the vw gets too low.
+
