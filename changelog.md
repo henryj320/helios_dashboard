@@ -1,5 +1,5 @@
 # react_dashboard
-Last update: 2023-02-06 23:10
+Last update: 2023-02-12 00:28
 <br><br>
 
 ## Changelog for react_dashboard
@@ -204,9 +204,51 @@ SyntaxError: Unexpected token (53:40)
     - "sm" isn't scaling well, but the rest are acceptable
     - Why not change Raspberry Pi Health to its own Grid?
         - Maybe in future. Just a placeholder for now.
-36. TODO: Fix the thick bar issue and the images.
+36. Fix the thick bar issue and the images.
     - Turns out the <hr> bars were invisible with just the border showing.
     - Everything is now complete with the appearance except for the smaller scaling.
         - Consider the scaling more carefully
         - Complete change to the scale when the vw gets too low.
+37. Setting up the endpoints.
+    - Need to set up endpoints in Python. How does that work?
+        - https://towardsdatascience.com/the-right-way-to-build-an-api-with-python-cd08ab285f8f
+        - Could use a Flask API (like data-submission/webapi.file_api.py).
+        - Could be on the level above so it holds 2 resources - muscle_checker and gym_calendar.
+        - Add GET method and POST method.
+    - Need to call to that endpoint using axios.
+38. Making an endpoint
+    - Could make one endpoint that imports autogenerate_gym_calendar and muscle_checker.
+        - Then we wouldn't need to make changes to the actual scripts.
+    - pip install flask-restful
+    - imported everything
+        - reqparse is used to parse parameters for POST requests
+    - Added a Muscle_checker class for the methods
+    - Ran the API with app.run()
+    - Tested it worked:
+        - http://127.0.0.1:5000/muscle_checker
+            - Internal server error
+                - Unimplemented errror. Good!
+        - http://127.0.0.1:5000/shouldnt_work
+            - Good! Because that means our endpoint is recognised.
+    - Added a GET method
+    - Downloaded "HTTP Client" VS Code extension
+        - "..." -> New HTTP Request
+    - Added a POST method
+        - Struggling with:
+            - "userID": "Missing required parameter in the JSON body or the post body or the query string"
+            - I cannot figure out how to send that as a HTTP Request
+            - Got it!
+                - Needed to add a header:
+                    - content-type
+                    - application/json
+
+                    - Body is:
+                        - {"userID": "0011", "Person": null}
+        - Somehow the payload isnt correct
+            - curl http://127.0.0.1:5000/muscle_checker -d "userID=0011"
+            - That worked
+    - Adding a PUT method.
+        - Looks identical to POST
+    - Adding a DELETE method
+        - Again, exactly the same.
 
