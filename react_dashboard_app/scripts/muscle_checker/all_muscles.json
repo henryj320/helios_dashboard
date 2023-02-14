@@ -1,0 +1,227 @@
+{
+    "groups": [
+        {
+            "name": "Push",
+            "muscles": [
+                "Pecs",
+                "Triceps",
+                "Front Deltoids",
+                "Side Deltoids",
+                "Rear Deltoids"
+            ]
+        },
+        {
+            "name": "Pull",
+            "muscles": [
+                "Biceps",
+                "Lats",
+                "Traps (Trapezius)",
+                "General Back"
+            ]
+        },
+        {
+            "name": "Legs",
+            "muscles": [
+                "Glutes",
+                "Quads",
+                "Hamstrings",
+                "Calves"
+            ]
+        },
+        {
+            "name": "Misc",
+            "muscles": ["Abs"]
+        }
+    ],
+
+    "muscles": [
+        {
+            "name": "Pecs",
+            "exercises": [
+                "Bench Press",
+                "Incline BP",
+                "Incline Bench Press",
+                "Decline BP",
+                "Decline Bench Press",
+                "BP Smith Machine",
+                "Incline BP Smith Machine",
+                "Incline Bench Press Smith Machine",
+                "Decline BP Smith Machine",
+                "Decline Bench Press Smith Machine",
+                "Dumbbell Chest Flys",
+                "Chest Flys",
+                "Machine Chest Flys",
+                "Chest Dips",
+                "Tricep Dips",
+                "Dumbbell Bench Press",
+                "Chest Press Machine"
+            ]
+        },
+        {
+            "name": "Triceps",
+            "exercises": [
+                "CG Bench Press",
+                "Close Grip Bench Press",
+                "Skullcrushers",
+                "Tricep Dips",
+                "Chest Dips",
+                "Tricep Machine Dips",
+                "Tricep Pull-Downs",
+                "Tricep Pushdowns",
+                "Rope Pushdowns",
+                "Tricep Overhead Extensions",
+                "Trice OtHL",
+                "Close-Grip Bench Press"
+            ]
+        },
+        {
+            "name": "Front Deltoids",
+            "exercises": [
+                "Front Shoulder Raises",
+                "Landmine Press",
+                "Barbell Shoulder Press",
+                "Shoulder Press Machine",
+                "Dumbbell Shoulder Press"
+            ]
+        },
+        {
+            "name": "Side Deltoids",
+            "exercises": [
+                "Side Shoulder Raises",
+                "Side Lateral Raises",
+                "Barbell Upright Row",
+                "Dumbbell Military Press"
+            ]
+        },
+        {
+            "name": "Rear Deltoids",
+            "exercises": [
+                "Rear Delt Machine",
+                "Bent-Over Row",
+                "Bent Over Row",
+                "Bent-Over Rows",
+                "Bent Over Rows",
+                "Dumbbell W-Raises",
+                "W-Raises"
+            ]
+        },
+        {
+            "name": "Biceps",
+            "exercises": [
+                "EZ Bar Curls",
+                "Cable Curls",
+                "Barbell Curls",
+                "CG Barbell Curls",
+                "WG Barbell Curls",
+                "Bicep Curls",
+                "Hammer Curls",
+                "Concentration Curls",
+                "Conc. Curls",
+                "Chin-Ups"
+            ]
+        },
+        {
+            "name": "Lats",
+            "exercises": [
+                "Deadlifts",
+                "Barbell Rows",
+                "Pull-Ups",
+                "Hanging Half Pull Ups",
+                "Hanging Half Pull-Ups",
+                "Chin-Ups",
+                "Lat Pull-Downs",
+                "Bent-Over Row",
+                "Bent Over Row",
+                "Bent-Over Rows",
+                "Bent Over Rows"
+            ]
+        },
+        {
+            "name": "Traps (Trapezius)",
+            "exercises": [
+                "Shrugs",
+                "Barbell Shrugs",
+                "Deadlifts"
+            ]
+        },
+        {
+            "name": "General Back",
+            "exercises": [
+                "Deadlifts",
+                "Landmine Rows",
+                "T-Bar Rows",
+                "Cable Rows",
+                "Close Grip Cable Rows",
+                "CG Cable Rows"
+            ]
+        },
+        {
+            "name": "Glutes",
+            "exercises": [
+                "Squats",
+                "Back Squats",
+                "Deadlifts",
+                "Lunges",
+                "Reverse Lunges",
+                "Leg Press Machine",
+                "Angled Leg Press",
+                "Half Rep Angled Leg Press",
+                "Half-Rep Angled Leg Press",
+                "Run",
+                "Ran"
+            ]
+        },
+        {
+            "name": "Quads",
+            "exercises": [
+                "Squats",
+                "Front Squads",
+                "Deadlifts",
+                "Lunges",
+                "Reverse Lunges",
+                "Leg Press",
+                "Leg Press Machine",
+                "Angled Leg Press",
+                "Leg Extension Machine",
+                "Leg Extensions Machine",
+                "Leg Extensions",
+                "Run",
+                "Ran"
+            ]
+        },
+        {
+            "name": "Hamstrings",
+            "exercises": [
+                "Squats",
+                "Back Squats",
+                "Lunges",
+                "Reverse Lunges",
+                "Leg Press Machine",
+                "Angled Leg Press",
+                "Prone Leg Curls",
+                "Leg Curl Machine",
+                "Leg Curls",
+                "Run",
+                "Ran"
+            ]
+        },
+        {
+            "name": "Calves",
+            "exercises": [
+                "Deadlifts",
+                "Prone Leg Curls",
+                "Leg Curl Machine",
+                "Leg Curls",
+                "Calf Raises"
+            ]
+        },
+        {
+            "name": "Abs",
+            "exercises": [
+                "Abs",
+                "Obliques",
+                "Knee Raises"
+            ]
+        }
+    ]
+}

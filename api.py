@@ -1,6 +1,10 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
-import ast
+
+# from ..muscle_checker.muscle_checker_script import *
+# import muscleChecker
+
+import react_dashboard_app.scripts.muscle_checker.muscle_checker_script as mc
 
 app = Flask(__name__)
 api = Api(app)
@@ -15,7 +19,10 @@ class Muscle_checker(Resource):
 
     def get(self):
         """Request for some information."""
-        data = "Example data"
+
+        data = mc.muscle_checker_run("./scripts/muscle_checker/insert_calendar_text.txt")
+
+        # data = "Example data"
         return {'data': data}, 200  # 200 OK code.
 
 
@@ -82,4 +89,4 @@ api.add_resource(Muscle_checker, '/muscle_checker')  # Links the class to the /m
 
 
 if __name__ == '__main__':
-    app.run()  # Runs the Flask app
+    app.run()  # Runs the Flask app.

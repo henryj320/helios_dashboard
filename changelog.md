@@ -251,4 +251,33 @@ SyntaxError: Unexpected token (53:40)
         - Looks identical to POST
     - Adding a DELETE method
         - Again, exactly the same.
+39. Making muscle_checker pip installable
+    - So that I can then import it
+    - Followed my "Using Click" tutorial.
+    - Creating a VE
+    - Activating the ve
+    - cd ../muscle_checker/
+    - pip install -e .
+        - Installed muscle_checker
+    - cd ../react_dashboard/react_dashboard_app
+    - May not work with the "-" in the name
+        - pip uninstall muscle-checker
+        - Removed the "-" in setup.py
+        - . ../react_dashboard/venv/bin/activate
+    - pip install -e .
+    - pip install flask
+    - pip install flask-restful
+    - ModuleNotFoundError: No module named 'muscleChecker'
+        - Added an entry point to setup.py
+        - python -m pip install -e .
+    - Still cannot import it. May be easier just to have a version of it locally.
+40. Making a duplicate of muscle checker
+    - Added it in scripts
+    - Renamed run() to muscle_checker_run()
+    - Running it on a GET request.
+        - NameError: name 'muscle_checker_run' is not defined
+        - mc.muscle_checker_run()
+    - Changed reference in the script to all_muscles.json
+    - GET method now outputs the data from muscle_checker
+
 
