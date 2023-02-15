@@ -201,7 +201,7 @@ def suggested_exercises(all_muscles: str, missed_muscle: str) -> str:
     # Add a check if the same exercise comes twice
 
 
-def muscle_checker_run(file: str) -> dict:
+def run(file: str) -> dict:
     """Run the file. Fires off all of the functions and outputs a dict.
 
     Args:
@@ -253,12 +253,20 @@ def run_string(string: str):
     Args:
         string (str): The calendar text to get the results from.
     """
-    f = open("muscle_checker/insert_calendar_text.txt", "w")  # Opens the file to be overwritten ("w").
+    f = open("./scripts/muscle_checker/insert_calendar_text.txt", "w")  # Opens the file to be overwritten ("w").
     f.write(string + "\n")
     f.close()
 
-    return muscle_checker_run("muscle_checker/insert_calendar_text.txt")
+    return run("./scripts/muscle_checker/insert_calendar_text.txt")
 
+
+def update_txt_file(string: str) -> bool:
+
+    f = open("./scripts/muscle_checker/insert_calendar_text.txt", "w")
+    f.write(string + "\n")
+    f.close()
+
+    return True
 
 
 
@@ -266,9 +274,9 @@ if __name__ == "__main__":  # Default method to run.
 
     parser = argparse.ArgumentParser(description="A python script to state which muscles have been missed given calendar text.")  # Allows parsing arguments to the file.
     # parser.add_argument("-f", "--set_calendar_file", help="Sets the location of insert_calendar_text.txt.", default="insert_calendar_text.txt", type=str)
-    parser.add_argument("-f", "--file", help="Sets the location of insert_calendar_text.txt.", default="muscle_checker/insert_calendar_text.txt", type=str)
+    parser.add_argument("-f", "--file", help="Sets the location of insert_calendar_text.txt.", default="./scripts/muscle_checker/insert_calendar_text.txt", type=str)
     args = parser.parse_args()
 
-    print(muscle_checker_run(args.file))
+    print(run(args.file))
 
     # run_string("hello")

@@ -224,6 +224,7 @@ SyntaxError: Unexpected token (53:40)
         - reqparse is used to parse parameters for POST requests
     - Added a Muscle_checker class for the methods
     - Ran the API with app.run()
+        - ` python ../api.py ` in the terminal.
     - Tested it worked:
         - http://127.0.0.1:5000/muscle_checker
             - Internal server error
@@ -279,5 +280,53 @@ SyntaxError: Unexpected token (53:40)
         - mc.muscle_checker_run()
     - Changed reference in the script to all_muscles.json
     - GET method now outputs the data from muscle_checker
+41. Making the API visible across the network
+    - Probably not necessary - Both will be hosted on the RPi.
+        - Still useful.
+    - Also set the port to 4,000 to try and stop issues with React.
+42. Making the GET and PUT methods
+    - GET to output the JSON with a given string.
+    - PUT to update the insert_calendar_text.txt file.
+    - Tested both. Worked fine!
+        - Header: content-type     application/json
+    - Backend for muscle_checker is now ready.
+43. Adding the front-end for muscle_checker
+    - npm install axios
+        - Hangs.
+    - Deleted package-lock.json
+    - Deleted node-modules
+    - npm install
+        - Hangs.
+    - npm cache clear --force
+    - Still hangs...
+    - npm -v
+        - 8.19.3
+    - npm install -g npm@latest
+        - Hangs
+    - npm set strict-ssl false
+    - npm install
+        - Still hangs
+        - network request to https://registry.npmjs.org/axios failed, reason: connect ETIMEDOUT 2606:4700::6810:1923:443
+        - network In most cases you are behind a proxy or have bad network settings.
+        - network If you are behind a proxy, please make sure that the
+        - npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+    - ping registry npmjs.org
+        - To check it is reachable
+    - ping google.com
+        - Failed
+    - ping 8.8.8.8
+        - Worked
+    - Is [this](https://askubuntu.com/questions/886359/ping-8-8-8-8-works-but-ping-www-google-com-doesnt) the issue?
+    - Recovered package-lock.json and node-modules
+    - Tried it on the work laptop
+        - npm install works fine.
+        - Can I just move the axios files across?
+            - Seems to still run like that
+44. Trying to add axios to React
+    - pip install flask-cors
+    - CORS(app) seems to work
+    - Setting state to update with response
+        - cannot use state because it doesnt extend component.
+    - Using useState instead
 
 

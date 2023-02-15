@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
+from flask_cors import CORS
+
 
 # from ..muscle_checker.muscle_checker_script import *
 # import muscleChecker
@@ -8,6 +10,8 @@ import react_dashboard_app.scripts.muscle_checker.muscle_checker_script as mc
 
 app = Flask(__name__)
 api = Api(app)
+
+CORS(app)
 
 
 class Muscle_checker(Resource):
@@ -18,75 +22,36 @@ class Muscle_checker(Resource):
     """
 
     def get(self):
-        """Request for some information."""
+        """GETs the JSON response from muscle_checker."""
 
-        data = mc.muscle_checker_run("./scripts/muscle_checker/insert_calendar_text.txt")
+        test_string = "Bench Press:\nTricep Pull-Downs:\nAbs for 8:\nSquats:"
 
-        # data = "Example data"
+        # Runs muscle_checker and sets data to the output JSON.
+        data = mc.run_string(test_string)
+
         return {'data': data}, 200  # 200 OK code.
 
 
-    def post(self):
-        """Request to insert new data."""
-        parser = reqparse.RequestParser()  # reqparse is used to parse arguments.
-
-        parser.add_argument('userID', required=True)  # Adds 'userID' as a required argument.
-        parser.add_argument('name', required=False)
-
-        args = parser.parse_args()  # Parses the arguments into type dictionary.
-
-        data = {
-            'userID': args['userID'],
-            'Person': args['name']
-        }
-
-        # ... Do something with data
-
-        return {'data': data}, 200
-    
-
     def put(self):
-        """Request to amend some data."""
+        """Updates insert_calendar_text.txt ready to be used."""
         parser = reqparse.RequestParser()  # reqparse is used to parse arguments.
 
-        parser.add_argument('userID', required=True)  # Adds 'userID' as a required argument.
-        parser.add_argument('name', required=False)
+        parser.add_argument('text', required=True)  # text argument contains the text to add to insert_calendar_text.
 
         args = parser.parse_args()  # Parses the arguments into type dictionary.
 
-        data = {
-            'userID': args['userID'],
-            'Person': args['name']
-        }
-
-        # ... Do something with data
-
-        return {'data': data}, 200
-
-
-    def delete(self):
-        """Request to amend some data."""
-        parser = reqparse.RequestParser()  # reqparse is used to parse arguments.
-
-        parser.add_argument('userID', required=True)  # Adds 'userID' as a required argument.
-        parser.add_argument('name', required=False)
-
-        args = parser.parse_args()  # Parses the arguments into type dictionary.
+        success = mc.update_txt_file(args['text'])  # Runs the script.
 
         data = {
-            'userID': args['userID'],
-            'Person': args['name']
+            'text': args['text'],
+            'success': success
         }
 
-        # ... Do something with data
-
         return {'data': data}, 200
-
-
 
 
 api.add_resource(Muscle_checker, '/muscle_checker')  # Links the class to the /muscle_checker endpoint.
 
 
 if __name__ == '__main__':
-    app.run()  # Runs the Flask app.
+    app.run(host="0.0.0.0", port="4000")  # Runs the Flask app.
