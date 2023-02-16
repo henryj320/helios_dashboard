@@ -328,5 +328,25 @@ SyntaxError: Unexpected token (53:40)
     - Setting state to update with response
         - cannot use state because it doesnt extend component.
     - Using useState instead
-
-
+45. Came up with an idea for how muscle_checker should be laid out:
+    - Grid-like pattern like the main page.
+        - One grid item per muscle group (push, pull, legs, misc)
+            - Contains exercises for that group in a table
+                - Exercise (dropdown)
+                - Muscle (autofill from exercise)
+                - Delete button
+            - "Add" button to add more exercises
+        - "Add"  button to add more muscle groups
+        - Alternative grid item to just paste the calendar content into (START WITH THIS)
+    - This could then be converted into the required format.
+44. Adding the muscle checker page
+    - ERR_BLOCKED_BY_CLIENT means that Brave blocked it
+    - ERR_EMPTY_RESPONSE means that you are trying to connect to localhost instead of 192.168...
+    - Getting a URL argument to know whether entering the page for the first time, or after data is filled
+    - Made the basic form
+    - Made a submit button
+    - TODO:
+        - Write a muscle_checker function to update the .txt file
+        - Make a JS function to call it with POST
+        - Add that to the returnMuscles() method
+        - Output the response
