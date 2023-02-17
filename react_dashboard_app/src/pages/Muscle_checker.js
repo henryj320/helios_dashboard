@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useEffect, UseState } from "react";
+import { useEffect } from "react";
 
 
 import axios from 'axios'
@@ -19,6 +19,8 @@ const queryParameters = new URLSearchParams(window.location.search)
 var page = queryParameters.get("page")
 console.log(page)
 
+var textInput = ""
+
 export const Muscle_checker = () => {
 
     // const [apiResponse, setResponse] = useState([])
@@ -31,7 +33,7 @@ export const Muscle_checker = () => {
         suggestions: []
     })
 
-    const [textInput, setText] = useState("")
+    // const [textInput, setText] = useState("initial")
 
     // Runs getResponse() once when the page loads.s
     useEffect(
@@ -63,35 +65,66 @@ export const Muscle_checker = () => {
         //     });
         // }, []);
 
-        axios.get(base_url).then((response) => {
-            console.log(response);
+        // input_text = String(input_text)
+        // console.log(input_text)
+
+        var requestData = {
+            "text": textInput
+        };
+
+        var headers = {
+            'Content-Type': 'application/json'
+        }
+
+        // POST request to update the insert_calendar_text.txt file.
+        axios.put(base_url, requestData, {headers: headers}).then((response) => {
+
+            console.log(response)
+            console.log("insert_calendar_text.txt update was successful.");
 
             if (response.status == 200) {
 
-                // setResponse([
-                //     response.data.data.hit_muscle_groups
-                // ])
+                // GET request to retrieve the response from the API.
+                axios.get(base_url).then((response) => {
+                    console.log(response);
 
-                setData(response.data.data)
+                    if (response.status == 200) {
+
+                        // setResponse([
+                        //     response.data.data.hit_muscle_groups
+                        // ])
+
+                        setData(response.data.data)
+
+                    }
+
+
+                    //setResponse(response)
+
+                    // this.setState({ response })
+                });
 
             }
 
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 
-            //setResponse(response)
 
-            // this.setState({ response })
-        });
+
+        
 
     };
 
-    function changePage(page) {
-        if (page == 2) {
-            page = 1
-        } else {
-            page = 2
-        }
-        console.log(page)
-    }
+    // function changePage(page) {
+    //     if (page == 2) {
+    //         page = 1
+    //     } else {
+    //         page = 2
+    //     }
+    //     console.log(page)
+    // }
 
 
     console.log(apiData)
@@ -116,22 +149,36 @@ export const Muscle_checker = () => {
 
     
 
-        // Main method run when the form is submitted
+        // Main method run when the form is submitted.
         function returnMuscles() {
 
             event.preventDefault();  // Stops the page reloading on button click.
 
-            var form = document.getElementById("main_form");
+            // Grabs the relevant elements.
+            var form = document.getElementById("mainForm");
+            var inputDiv = document.getElementById("initialDiv");
+            var resultsDiv = document.getElementById("resultsDiv");
 
+            // Hides the input div and shows the results div.
+            inputDiv.style = "display: none";
+            resultsDiv.style = "display: block";
+
+            // Updates the state of textInput.
             var text_input = form.text_input.value.toString();
+            
+            // setText(text_input); 
 
-            setText(text_input); 
+            // setText("Hekl")
+            textInput = text_input
+
+            console.log(text_input)
+            console.log(textInput)
+
+            getResponse()
 
 
 
-            console.log(text_input);
-
-            console.log('this is:' + this);
+            console.log(apiData);
 
         };
 
@@ -139,14 +186,27 @@ export const Muscle_checker = () => {
 
         return (
             <>
-                <h1>Muscle Checker</h1>
-                <p>page: {page}</p>
+                <div id="initialDiv">
 
-                <form id="main_form">
-                    <textarea id="text_input" name="text_input" rows="4" cols="50">Insert your calendar text here.</textarea>
-                    <button onClick={() => returnMuscles()}>Submit</button>
-                </form>
+                    <h1>Muscle Checker</h1>
+                    <p>page: {page}</p>
+
+                    <form id="mainForm">
+                        <textarea id="text_input" name="text_input" rows="4" cols="50" defaultValue="Insert your calendar text here."></textarea>
+                        <button onClick={() => returnMuscles()}>Submit</button>
+                    </form>
     
+                </div>
+
+                <div id="resultsDiv">
+                    <h2>Results</h2>
+                    <br></br>
+                    <p>Hit Muscle Groups: {apiData.hit_muscle_groups}</p>
+                    <p>Missed Muscle Groups: {apiData.missed_muscle_groups}</p>
+                    <p>Hit Muscles: {apiData.hit_muscles}</p>
+                    <p>Suggestions: {apiData.suggestions}</p>
+                    <br></br>
+                </div>
             </>
         )
 

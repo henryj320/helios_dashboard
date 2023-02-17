@@ -27,7 +27,7 @@ class Muscle_checker(Resource):
         test_string = "Bench Press:\nTricep Pull-Downs:\nAbs for 8:\nSquats:"
 
         # Runs muscle_checker and sets data to the output JSON.
-        data = mc.run_string(test_string)
+        data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')
 
         return {'data': data}, 200  # 200 OK code.
 
@@ -41,6 +41,8 @@ class Muscle_checker(Resource):
         args = parser.parse_args()  # Parses the arguments into type dictionary.
 
         success = mc.update_txt_file(args['text'])  # Runs the script.
+
+        success = True
 
         data = {
             'text': args['text'],

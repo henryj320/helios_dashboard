@@ -21,7 +21,6 @@ class Muscle:
     name: str
     exercises: List
 
-
 def json_file_to_dict(file: str) -> dict:
     """Take the location of the JSON file and return the JSON.
 
@@ -266,6 +265,7 @@ def update_txt_file(string: str) -> bool:
     f.write(string + "\n")
     f.close()
 
+
     return True
 
 
@@ -278,5 +278,7 @@ if __name__ == "__main__":  # Default method to run.
     args = parser.parse_args()
 
     print(run(args.file))
+
+    # update_txt_file("Test")
 
     # run_string("hello")

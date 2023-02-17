@@ -350,3 +350,8 @@ SyntaxError: Unexpected token (53:40)
         - Make a JS function to call it with POST
         - Add that to the returnMuscles() method
         - Output the response
+    - Made a new function in muscle_checker_script.py to update insert_calendar_text.txt
+    - Trying to call the PUT method.
+        - {"text": "hey"}
+    - GET seems to happen before PUT. Need to make it sync
+    - All sorted. Works now, just looks terrible
