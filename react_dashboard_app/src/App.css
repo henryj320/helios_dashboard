@@ -75,3 +75,17 @@ hr {
 #resultsDiv {
   display: none;
 }
+
+
+#mainForm button{
+  padding: 1% 2%;
+  color: #444;
+}
+
+#text_input {
+  width: 98%;
+  padding: 1%;
+  background: rgb(240, 240, 240);
+  border: 1px solid rgb(158, 158, 158);
+  color: #666666;
+}

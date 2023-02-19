@@ -6,6 +6,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
+
+import { Link } from 'react-router-dom'
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -28,9 +31,8 @@ export default function Sidebar() {
                     boxShadow: 3,
                     background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
                     fontSize: '1vw',
-                    fontWeight: '200',
-                    color: 'white'
-                },
+                    color: '#e6e6e6'
+                }
             }}>
                 <Grid item lg={12}>
                     <Item sx={{
@@ -47,8 +49,8 @@ export default function Sidebar() {
                             <li>GitHUb</li>
                         </ul> */}
 
-                        <span>Dashboard</span>
-                        <span>Muscle Checker</span>
+                        <Link class="link" to="/" target=""><span>Dashboard</span></Link>
+                        <Link class="link" to="/muscle_checker" target=""><span>Muscle Checker</span></Link>
                         <span>Gym Calendar</span>
                         <span>GitHub</span>
                     </Item>

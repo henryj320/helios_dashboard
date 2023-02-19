@@ -356,4 +356,7 @@ SyntaxError: Unexpected token (53:40)
     - GET seems to happen before PUT. Need to make it sync
     - All sorted. Works now, just looks terrible
 45. Drew a design for the muscle checker page
-46. Trying to  add the elements
+46. Trying to add the elements
+    - Taking some time.
+    - Weird issue with having inline items - set them to "display: flex".
+    - Added a sidebar with working links.

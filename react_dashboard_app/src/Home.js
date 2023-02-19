@@ -88,7 +88,7 @@ export const Home = () => {
                 }}>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
-                        <Link to="/muscle_checker" target="_blank">
+                        <Link to="/muscle_checker" target="">
                             <Item sx={ItemHeaderProperties}>
                                 <h2>Muscle Checker</h2>
                             </Item>
