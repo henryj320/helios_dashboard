@@ -339,7 +339,7 @@ SyntaxError: Unexpected token (53:40)
         - "Add"  button to add more muscle groups
         - Alternative grid item to just paste the calendar content into (START WITH THIS)
     - This could then be converted into the required format.
-44. Adding the muscle checker page
+44. Adding the muscle checker page backend
     - ERR_BLOCKED_BY_CLIENT means that Brave blocked it
     - ERR_EMPTY_RESPONSE means that you are trying to connect to localhost instead of 192.168...
     - Getting a URL argument to know whether entering the page for the first time, or after data is filled
@@ -355,3 +355,5 @@ SyntaxError: Unexpected token (53:40)
         - {"text": "hey"}
     - GET seems to happen before PUT. Need to make it sync
     - All sorted. Works now, just looks terrible
+45. Drew a design for the muscle checker page
+46. Trying to  add the elements

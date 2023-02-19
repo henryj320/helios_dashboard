@@ -5,6 +5,13 @@ import { useEffect } from "react";
 
 import axios from 'axios'
 
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+
+
+import Sidebar from '../components/Sidebar/Sidebar';
+
 
 const config = {
     headers: {
@@ -13,6 +20,30 @@ const config = {
     }
 }
 
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    color: theme.palette.text.secondary,
+}));
+
+const ItemProperties = {
+    borderRadius: 2,
+    boxShadow: 5,
+    border: '1px solid lightgrey',
+    minHeight: {sm: '30px', md: '80px', lg: '80px'},
+    paddingTop: {sm: '7vw', md: '6.2vw', lg: '5.2vw'},
+    paddingLeft: '1.3vw',
+    paddingRight: '1.3vw',
+    fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
+    // background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
+    "&:hover": {
+        // Add what happens on hover
+        // cursor: 'pointer',
+        // background: 'linear-gradient(to right bottom, grey, lightgrey)'
+                        background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
+    },
+}
 
 // Receives the URL arguments
 const queryParameters = new URLSearchParams(window.location.search)
@@ -161,7 +192,7 @@ export const Muscle_checker = () => {
 
             // Hides the input div and shows the results div.
             inputDiv.style = "display: none";
-            resultsDiv.style = "display: block";
+            resultsDiv.style = "display: flex; color: red";
 
             // Updates the state of textInput.
             var text_input = form.text_input.value.toString();
@@ -186,27 +217,110 @@ export const Muscle_checker = () => {
 
         return (
             <>
-                <div id="initialDiv">
-
-                    <h1>Muscle Checker</h1>
-                    <p>page: {page}</p>
-
-                    <form id="mainForm">
-                        <textarea id="text_input" name="text_input" rows="4" cols="50" defaultValue="Insert your calendar text here."></textarea>
-                        <button onClick={() => returnMuscles()}>Submit</button>
-                    </form>
+            <div class="float-container">
     
-                </div>
+                <Sidebar></Sidebar>
+    
+                <div id="mainDiv">
+                    <Grid container spacing={4} sx={{
 
-                <div id="resultsDiv">
-                    <h2>Results</h2>
-                    <br></br>
-                    <p>Hit Muscle Groups: {apiData.hit_muscle_groups}</p>
-                    <p>Missed Muscle Groups: {apiData.missed_muscle_groups}</p>
-                    <p>Hit Muscles: {apiData.hit_muscles}</p>
-                    <p>Suggestions: {apiData.suggestions}</p>
-                    <br></br>
+                        marginLeft: '0%',
+                        maxWidth: '100%',
+                        marginRight: '0%',
+                        gap: 2,
+                        textAlign: 'center',
+                    }}>
+                        <Grid item xs={12}>
+                            <Item sx={{
+                                borderRadius: 2,
+                                boxShadow: 5,
+                                border: '1px solid lightgrey',
+                                paddingLeft: '1.3vw',
+                                paddingRight: '1.3vw',
+                                fontSize: 18,
+                            }}>
+                                <h1>Muscle Checker</h1>
+                            </Item>
+                        </Grid>
+                    </Grid>
+
+                    <br></br><br></br>
+
+                    <Grid id="initialDiv" container spacing={4} sx={{
+                        marginLeft: '0%',
+                        maxWidth: '100%',
+                        marginRight: '0%',
+                        gap: 2,
+                    }}>
+                    
+                        <Grid item xs={12}>
+                            <Item sx={ItemProperties}>
+
+
+                                <div>
+
+                                    {/* <p>page: {page}</p> */}
+
+                                    <form id="mainForm">
+                                        <textarea id="text_input" name="text_input" rows="14" cols="50" defaultValue="Insert your calendar text here."></textarea>
+                                        <button onClick={() => returnMuscles()}>Submit</button>
+                                    </form>
+
+
+                                </div>
+                            </Item>
+                        </Grid>
+    
+                    </Grid>
+
+                    <Grid id="resultsDiv" container spacing={4} sx={{
+                        marginLeft: '0%',
+                        maxWidth: '100%',
+                        marginRight: '0%',
+                        gap: 2,
+                    }}>
+                        <Grid item xs={5.91}>
+                            <Item sx={{
+                                padding: '2.5%',
+                                paddingLeft: '5%',
+                                minHeight: '10vh',
+                                maxHeight: '10vh'
+                            }}> 
+                                <p>Hit Muscle Groups: {apiData.hit_muscle_groups}</p>
+                                <p>Hit Muscles: {apiData.hit_muscles}</p>
+                            </Item>
+                        </Grid>
+                        <Grid item xs={5.91}>
+                            <Item sx={{
+                                padding: '2.5%',
+                                paddingLeft: '5%',
+                                minHeight: '10vh',
+                                maxHeight: '10vh'
+                            }}>
+                                <p>Missed Muscle Groups: {apiData.missed_muscle_groups}</p>
+                            </Item>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Item sx={{
+                                padding: '2.5%',
+                            }}>
+                                <p>{apiData.suggestions[0]}</p>
+                                <p>{apiData.suggestions[1]}</p>
+                                <p>{apiData.suggestions[2]}</p>
+                                <p>{apiData.suggestions[3]}</p>
+                                <p>{apiData.suggestions[4]}</p>
+                                <p>{apiData.suggestions[5]}</p>
+                                <p>{apiData.suggestions[6]}</p>
+                                <p>{apiData.suggestions[7]}</p>
+                                <p>{apiData.suggestions[8]}</p>
+                                <p>{apiData.suggestions[9]}</p>
+                            </Item>
+                        </Grid>
+                    </Grid>
+
+
                 </div>
+            </div>
             </>
         )
 
