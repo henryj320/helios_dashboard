@@ -31,7 +31,10 @@ export default function Sidebar() {
                     boxShadow: 3,
                     background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
                     fontSize: '1vw',
-                    color: '#e6e6e6'
+                    // color: '#e6e6e6',
+                    color: '#1B1F23',
+                    marginLeft: '6%',
+                    marginRight: '6%',
                 }
             }}>
                 <Grid item lg={12}>
@@ -52,7 +55,7 @@ export default function Sidebar() {
                         <Link class="link" to="/" target=""><span>Dashboard</span></Link>
                         <Link class="link" to="/muscle_checker" target=""><span>Muscle Checker</span></Link>
                         <span>Gym Calendar</span>
-                        <span>GitHub</span>
+                        <Link class="link" to="https://github.com/henryj320" target="_blank"><span>GitHub</span></Link>
                     </Item>
                 </Grid>
             </Grid>

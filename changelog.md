@@ -356,7 +356,45 @@ SyntaxError: Unexpected token (53:40)
     - GET seems to happen before PUT. Need to make it sync
     - All sorted. Works now, just looks terrible
 45. Drew a design for the muscle checker page
-46. Trying to add the elements
+46. Trying to add the elements.
     - Taking some time.
     - Weird issue with having inline items - set them to "display: flex".
     - Added a sidebar with working links.
+    - Muscle checker page is now finished for the large scaling.
+        - Except for pictures
+47. Added GitHub link to the sidebar.
+48. Current status:
+    - Dashboard
+        - Everything visible and working in "xl" scaling.
+        - Images not customised yet.  **TODO**
+    - Muscle Checker
+        - API calls working.
+        - One item for intial, another for results.
+        - Form-style input not added yet. Only option is pasting the calendar code.
+        - Tick and Cross images not added yet.  **TODO**
+    - RPi Health
+        - Current static example content.
+        - No graphs added yet.
+    - Sidebar
+        - Created and works on "xl" scaling.
+        - Spacing either side could be improved  **TODO**.
+    - GitHub
+        - Link added
+49. Making the minor changes
+    - Increasing the margins for items in the sidebar.
+        - Just added margins
+    - Setting the images
+        - Using temporary ones for now
+        - Changed the colour to #1B1F23. Looks really nice
+
+---
+## Running the App
+
+- ` cd ` into the "react_dashboard_app" directory.
+- ` npm start ` in one terminal.
+- In another terminal:
+    - ` . ../venv/bin/activate `
+    - ` python ../api.py `
+
+---
+
