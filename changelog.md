@@ -1,5 +1,5 @@
 # react_dashboard
-Last update: 2023-02-06 23:10
+Last update: 2023-02-12 00:28
 <br><br>
 
 ## Changelog for react_dashboard
@@ -204,9 +204,197 @@ SyntaxError: Unexpected token (53:40)
     - "sm" isn't scaling well, but the rest are acceptable
     - Why not change Raspberry Pi Health to its own Grid?
         - Maybe in future. Just a placeholder for now.
-36. TODO: Fix the thick bar issue and the images.
+36. Fix the thick bar issue and the images.
     - Turns out the <hr> bars were invisible with just the border showing.
     - Everything is now complete with the appearance except for the smaller scaling.
         - Consider the scaling more carefully
         - Complete change to the scale when the vw gets too low.
+37. Setting up the endpoints.
+    - Need to set up endpoints in Python. How does that work?
+        - https://towardsdatascience.com/the-right-way-to-build-an-api-with-python-cd08ab285f8f
+        - Could use a Flask API (like data-submission/webapi.file_api.py).
+        - Could be on the level above so it holds 2 resources - muscle_checker and gym_calendar.
+        - Add GET method and POST method.
+    - Need to call to that endpoint using axios.
+38. Making an endpoint
+    - Could make one endpoint that imports autogenerate_gym_calendar and muscle_checker.
+        - Then we wouldn't need to make changes to the actual scripts.
+    - pip install flask-restful
+    - imported everything
+        - reqparse is used to parse parameters for POST requests
+    - Added a Muscle_checker class for the methods
+    - Ran the API with app.run()
+        - ` python ../api.py ` in the terminal.
+    - Tested it worked:
+        - http://127.0.0.1:5000/muscle_checker
+            - Internal server error
+                - Unimplemented errror. Good!
+        - http://127.0.0.1:5000/shouldnt_work
+            - Good! Because that means our endpoint is recognised.
+    - Added a GET method
+    - Downloaded "HTTP Client" VS Code extension
+        - "..." -> New HTTP Request
+    - Added a POST method
+        - Struggling with:
+            - "userID": "Missing required parameter in the JSON body or the post body or the query string"
+            - I cannot figure out how to send that as a HTTP Request
+            - Got it!
+                - Needed to add a header:
+                    - content-type
+                    - application/json
+
+                    - Body is:
+                        - {"userID": "0011", "Person": null}
+        - Somehow the payload isnt correct
+            - curl http://127.0.0.1:5000/muscle_checker -d "userID=0011"
+            - That worked
+    - Adding a PUT method.
+        - Looks identical to POST
+    - Adding a DELETE method
+        - Again, exactly the same.
+39. Making muscle_checker pip installable
+    - So that I can then import it
+    - Followed my "Using Click" tutorial.
+    - Creating a VE
+    - Activating the ve
+    - cd ../muscle_checker/
+    - pip install -e .
+        - Installed muscle_checker
+    - cd ../react_dashboard/react_dashboard_app
+    - May not work with the "-" in the name
+        - pip uninstall muscle-checker
+        - Removed the "-" in setup.py
+        - . ../react_dashboard/venv/bin/activate
+    - pip install -e .
+    - pip install flask
+    - pip install flask-restful
+    - ModuleNotFoundError: No module named 'muscleChecker'
+        - Added an entry point to setup.py
+        - python -m pip install -e .
+    - Still cannot import it. May be easier just to have a version of it locally.
+40. Making a duplicate of muscle checker
+    - Added it in scripts
+    - Renamed run() to muscle_checker_run()
+    - Running it on a GET request.
+        - NameError: name 'muscle_checker_run' is not defined
+        - mc.muscle_checker_run()
+    - Changed reference in the script to all_muscles.json
+    - GET method now outputs the data from muscle_checker
+41. Making the API visible across the network
+    - Probably not necessary - Both will be hosted on the RPi.
+        - Still useful.
+    - Also set the port to 4,000 to try and stop issues with React.
+42. Making the GET and PUT methods
+    - GET to output the JSON with a given string.
+    - PUT to update the insert_calendar_text.txt file.
+    - Tested both. Worked fine!
+        - Header: content-type     application/json
+    - Backend for muscle_checker is now ready.
+43. Adding the front-end for muscle_checker
+    - npm install axios
+        - Hangs.
+    - Deleted package-lock.json
+    - Deleted node-modules
+    - npm install
+        - Hangs.
+    - npm cache clear --force
+    - Still hangs...
+    - npm -v
+        - 8.19.3
+    - npm install -g npm@latest
+        - Hangs
+    - npm set strict-ssl false
+    - npm install
+        - Still hangs
+        - network request to https://registry.npmjs.org/axios failed, reason: connect ETIMEDOUT 2606:4700::6810:1923:443
+        - network In most cases you are behind a proxy or have bad network settings.
+        - network If you are behind a proxy, please make sure that the
+        - npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+    - ping registry npmjs.org
+        - To check it is reachable
+    - ping google.com
+        - Failed
+    - ping 8.8.8.8
+        - Worked
+    - Is [this](https://askubuntu.com/questions/886359/ping-8-8-8-8-works-but-ping-www-google-com-doesnt) the issue?
+    - Recovered package-lock.json and node-modules
+    - Tried it on the work laptop
+        - npm install works fine.
+        - Can I just move the axios files across?
+            - Seems to still run like that
+44. Trying to add axios to React
+    - pip install flask-cors
+    - CORS(app) seems to work
+    - Setting state to update with response
+        - cannot use state because it doesnt extend component.
+    - Using useState instead
+45. Came up with an idea for how muscle_checker should be laid out:
+    - Grid-like pattern like the main page.
+        - One grid item per muscle group (push, pull, legs, misc)
+            - Contains exercises for that group in a table
+                - Exercise (dropdown)
+                - Muscle (autofill from exercise)
+                - Delete button
+            - "Add" button to add more exercises
+        - "Add"  button to add more muscle groups
+        - Alternative grid item to just paste the calendar content into (START WITH THIS)
+    - This could then be converted into the required format.
+44. Adding the muscle checker page backend
+    - ERR_BLOCKED_BY_CLIENT means that Brave blocked it
+    - ERR_EMPTY_RESPONSE means that you are trying to connect to localhost instead of 192.168...
+    - Getting a URL argument to know whether entering the page for the first time, or after data is filled
+    - Made the basic form
+    - Made a submit button
+    - TODO:
+        - Write a muscle_checker function to update the .txt file
+        - Make a JS function to call it with POST
+        - Add that to the returnMuscles() method
+        - Output the response
+    - Made a new function in muscle_checker_script.py to update insert_calendar_text.txt
+    - Trying to call the PUT method.
+        - {"text": "hey"}
+    - GET seems to happen before PUT. Need to make it sync
+    - All sorted. Works now, just looks terrible
+45. Drew a design for the muscle checker page
+46. Trying to add the elements.
+    - Taking some time.
+    - Weird issue with having inline items - set them to "display: flex".
+    - Added a sidebar with working links.
+    - Muscle checker page is now finished for the large scaling.
+        - Except for pictures
+47. Added GitHub link to the sidebar.
+48. Current status:
+    - Dashboard
+        - Everything visible and working in "xl" scaling.
+        - Images not customised yet.  **TODO**
+    - Muscle Checker
+        - API calls working.
+        - One item for intial, another for results.
+        - Form-style input not added yet. Only option is pasting the calendar code.
+        - Tick and Cross images not added yet.  **TODO**
+    - RPi Health
+        - Current static example content.
+        - No graphs added yet.
+    - Sidebar
+        - Created and works on "xl" scaling.
+        - Spacing either side could be improved  **TODO**.
+    - GitHub
+        - Link added
+49. Making the minor changes
+    - Increasing the margins for items in the sidebar.
+        - Just added margins
+    - Setting the images
+        - Using temporary ones for now
+        - Changed the colour to #1B1F23. Looks really nice
+
+---
+## Running the App
+
+- ` cd ` into the "react_dashboard_app" directory.
+- ` npm start ` in one terminal.
+- In another terminal:
+    - ` . ../venv/bin/activate `
+    - ` python ../api.py `
+
+---
 

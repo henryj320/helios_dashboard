@@ -6,12 +6,17 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 import logo from './assets/images/flask_favicon.png'
+import mc_logo from './assets/images/muscle_checker_logo_1.png'
+import autogen_logo from './assets/images/no_symbol.png'
+import github_logo from './assets/images/github_logo.png'
+
 import { fontSize } from '@mui/system';
 
 import Rpi_health from './components/Rpi_health/Rpi_health';
 
 import { Link } from 'react-router-dom'
 import Sidebar from './components/Sidebar/Sidebar';
+
 
 
 
@@ -39,6 +44,8 @@ const ItemHeaderProperties = {
     background: 'none',
 }
 
+const col = "#48A2F1"
+
 const ItemImageProperties = {
     display: {sm: 'none', md: 'none', lg: 'block'},
     width: {lg: '4vw', xl: '5vw'},
@@ -63,12 +70,12 @@ const ItemProperties = {
     paddingRight: '1.3vw',
     fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
     // background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
-    "&:hover": {
-        // Add what happens on hover
-        // cursor: 'pointer',
-        // background: 'linear-gradient(to right bottom, grey, lightgrey)'
-                        background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
-    },
+    // "&:hover": {
+    //     // Add what happens on hover
+    //     // cursor: 'pointer',
+    //     // background: 'linear-gradient(to right bottom, grey, lightgrey)'
+    //                     background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
+    // },
 }
 
 export const Home = () => {
@@ -87,7 +94,7 @@ export const Home = () => {
                 }}>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
-                        <Link to="/muscle_checker" target="_blank">
+                        <Link to="/muscle_checker" target="">
                             <Item sx={ItemHeaderProperties}>
                                 <h2>Muscle Checker</h2>
                             </Item>
@@ -96,7 +103,7 @@ export const Home = () => {
                                 <p>Check which muscles you missed this week.</p>
                             </Item>
                             <Item sx={ItemImageProperties}>
-                                <img src={logo} alt="Logo" id="firstImage"/>
+                                <img src={mc_logo} alt="Logo" id="firstImage"/>
                             </Item>
                         </Link>
                     </Grid>
@@ -111,7 +118,7 @@ export const Home = () => {
                                 <p>Generate this week's workout plan.</p>
                             </Item>
                             <Item sx={ItemImageProperties}>
-                                <img src={logo} alt="Logo" id="firstImage"/>
+                                <img src={autogen_logo} alt="Logo" id="firstImage"/>
                             </Item>
                         </Link>
                     </Grid>
@@ -125,7 +132,7 @@ export const Home = () => {
                             <p>A link to my GitHub Repositories.</p>
                         </Item>
                         <Item sx={ItemImageProperties}>
-                            <img src={logo} alt="Logo" id="firstImage"/>
+                            <img src={github_logo} alt="Logo" id="firstImage"/>
                         </Item>
                     </Grid>
 
