@@ -23,9 +23,31 @@
   to { transform: rotate(360deg); }
 }
 
+/* 
+display: {sm: 'none', md: 'none', lg: 'block'},
+width: {lg: '4vw', xl: '5vw'},
+height: {lg: '4vw', xl: '5vw'},
+// position: 'relative',
+// left: {lg: '1.8vw', xl: '1.3vw'},
+// top: {lg: '-12vw', xl: '-12vw'},
+borderRadius: 2,
+boxShadow: 2,
+border: {md: '1px solid green', lg: '1px solid yellow', xl: '1px solid purple', xxl: '1px solid yellow'},
+zIndex: 0,
+background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)', */
+
+#testingTable {
+}
+
+.imageTD {
+  width: 1vw;
+}
 
 #firstImage {
-  width: 100%;
+  width: 6vw;
+  border: 1px solid grey;
+  border-radius: 12px;
+  background: linear-gradient(to right bottom, #48A2F1, #1B74E8)
 }
 
 .cardHeader {

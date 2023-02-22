@@ -44,7 +44,29 @@ const ItemHeaderProperties = {
     background: 'none',
 }
 
-const col = "#48A2F1"
+const newItemProperties = {
+
+    marginTop: '0.5vw',
+    borderRadius: 2,
+    boxShadow: 5,
+    border: '1px solid lightgrey',
+    paddingLeft: '1.3vw',
+    paddingRight: '1.3vw',
+    fontSize: '1vw',
+
+    img: {
+        boxShadow: 2,
+        width: '6vw',
+        border: '1px solid #1B1F23',
+        borderRadius: '12px',
+        background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
+    },
+
+    table: {
+        width: '100%'
+    }
+
+}
 
 const ItemImageProperties = {
     display: {sm: 'none', md: 'none', lg: 'block'},
@@ -95,6 +117,25 @@ export const Home = () => {
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
                         <Link to="/muscle_checker" target="">
+                        <Item sx={newItemProperties}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="imageTD">
+                                            <img src={mc_logo} alt="Logo"/>
+                                        </td>
+                                        <td>
+                                            <h2>Muscle Checker</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Item>
+                        </Link>
+                    </Grid>
+
+                    {/* <Grid item xs={3.7} md={3.7} lg={3.8}>
+                        <Link to="/muscle_checker" target="">
                             <Item sx={ItemHeaderProperties}>
                                 <h2>Muscle Checker</h2>
                             </Item>
@@ -106,9 +147,28 @@ export const Home = () => {
                                 <img src={mc_logo} alt="Logo" id="firstImage"/>
                             </Item>
                         </Link>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item xs={3.7} md={3.7} lg={3.8}>
+                        <Link to="/gym_calendar" target="">
+                        <Item sx={newItemProperties}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="imageTD">
+                                            <img src={autogen_logo} alt="Logo"/>
+                                        </td>
+                                        <td>
+                                            <h2>Gym Calendar</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Item>
+                        </Link>
+                    </Grid>
+
+                    {/* <Grid item xs={3.7} md={3.7} lg={3.8}>
                         <Link to="/gym_calendar" target="_blank">
                             <Item sx={ItemHeaderProperties}>
                                 <h2>Gym Calendar</h2>
@@ -121,9 +181,9 @@ export const Home = () => {
                                 <img src={autogen_logo} alt="Logo" id="firstImage"/>
                             </Item>
                         </Link>
-                    </Grid>
+                    </Grid> */}
 
-                    <Grid item xs={3.7} md={3.7} lg={3.8}>
+                    {/* <Grid item xs={3.7} md={3.7} lg={3.8}>
                         <Item sx={ItemHeaderProperties}>
                             <h2>GitHub</h2>
                         </Item>
@@ -134,9 +194,30 @@ export const Home = () => {
                         <Item sx={ItemImageProperties}>
                             <img src={github_logo} alt="Logo" id="firstImage"/>
                         </Item>
+                    </Grid> */}
+
+                    
+                    <Grid item xs={3.7} md={3.7} lg={3.8}>
+                        <Link to="https://github.com/henryj320" target="_blank">
+                        <Item sx={newItemProperties}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="imageTD">
+                                            <img src={github_logo} alt="Logo"/>
+                                        </td>
+                                        <td>
+                                            <h2>GitHub</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Item>
+                        </Link>
                     </Grid>
 
                     <Grid item sm={11.4} md={11.15} lg={11.4} xl={11.4} sx={{
+                        marginTop: '1.5vw',
                         marginLeft: {sm: '2.0%', md: '3vw', lg: '2.25vw', xl: '1.7vw'},
                         borderRadius: 2,
                         boxShadow: 5,
@@ -147,8 +228,8 @@ export const Home = () => {
                         
                         fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
                         background: 'white',
-                        position: 'relative',
-                        top: {sm: '2vw', md: '1.5vw', lg: '-4vw', xl: '-5vw'},
+                        // position: 'relative',
+                        // top: {sm: '2vw', md: '1.5vw', lg: '-4vw', xl: '-5vw'},
                         minHeight: {md: '55vh', lg: '0vh'},
                     }}>
                         <Item sx={{
