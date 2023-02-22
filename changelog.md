@@ -398,3 +398,10 @@ SyntaxError: Unexpected token (53:40)
 
 ---
 
+49. Making the minor changes
+    - Increasing the margins for items in the sidebar.
+        - Just added margins
+    - Setting the images
+        - Using temporary ones for now
+        - Changed the colour to #1B1F23. Looks really nice
+50. Merging the branch in.
