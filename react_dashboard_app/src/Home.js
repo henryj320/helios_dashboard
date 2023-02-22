@@ -35,7 +35,7 @@ const ItemHeaderProperties = {
     left: {sm: '1vw', md: '2vw', lg: '3vw', xl: '3vw'},
     top: {sm: '8vw', md: '7.4vw', lg: '6vw', xl: '6vw'},
     border: 0,
-    fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
+    fontSize: '1vw',
     boxShadow: 0,
     "&:hover": {
         // Add what happens on hover
@@ -55,7 +55,7 @@ const ItemImageProperties = {
     top: {lg: '-12vw', xl: '-12vw'},
     borderRadius: 2,
     boxShadow: 2,
-    border: {xs: '1px solid lightgrey', sm: '1px solid red', md: '1px solid green', lg: '1px solid blue', xl: '1px solid purple', xxl: '1px solid yellow'},
+    border: {md: 'none', lg: '1px solid yellow', xl: '1px solid purple', xxl: '1px solid yellow'},
     zIndex: 0,
     background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
 }
@@ -149,6 +149,7 @@ export const Home = () => {
                         background: 'white',
                         position: 'relative',
                         top: {sm: '2vw', md: '1.5vw', lg: '-4vw', xl: '-5vw'},
+                        minHeight: {md: '55vh', lg: '0vh'},
                     }}>
                         <Item sx={{
                             fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
@@ -202,14 +203,18 @@ export const Home = () => {
                                 li: {
                                     display: 'block',
                                     float: 'left',
-                                    width: {md: '6vw', lg: '7.5vw'},
-                                    marginLeft: '3vw',
-                                    marginRight: '3vw',
+                                    width: {md: '28%', lg: '7.5vw'},
+                                    marginLeft: {md: '5%', lg: '3vw'},
+                                    marginRight: {md: '6%', lg: '3vw'},
                                     border: '1px solid lightgrey',
                                     padding: '1%',
                                     borderRadius: 2,
                                     boxShadow: 3,
                                     background: '#F5F5F5',
+                                    // paddingTop: '10%'
+                                    marginTop: '20px',
+                                    marginBottom: '20px',
+                                    height: '55px',
                                     // minHeight: '7vw',
                                 }
 
