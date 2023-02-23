@@ -59,7 +59,9 @@ background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)', */
 
 body {
   background: linear-gradient(to right bottom, lightgrey, #888888);
+  background-repeat: round;
   /* #F5F5F5 */
+  overflow-x: hidden;
 }
 
 html {

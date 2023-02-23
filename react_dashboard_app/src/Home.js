@@ -218,22 +218,20 @@ export const Home = () => {
 
                     <Grid item sm={11.4} md={11.15} lg={11.4} xl={11.4} sx={{
                         marginTop: '1.5vw',
-                        marginLeft: {sm: '2.0%', md: '3vw', lg: '2.25vw', xl: '1.7vw'},
+                        marginLeft: {xs: '5.5vw', sm: '4vw', md: '3vw', lg: '2.25vw', xl: '1.7vw'},
                         borderRadius: 2,
                         boxShadow: 5,
                         border: '1px solid lightgrey',
-                        minHeight: {sm: '28vw', md: '22vw', lg: '21vw', xl: '17vw'},
-                        maxHeight: {sm: '28vw', md: '22vw', lg: '21vw', xl: '17vw'},
+                        minHeight: '18vh',
+                        maxHeight: '55vh',
                         paddingTop: {sm: '35%', md: '30%', lg: '23%'},
                         
-                        fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
                         background: 'white',
+                        display: {xs: 'none', sm: 'block'}
                         // position: 'relative',
                         // top: {sm: '2vw', md: '1.5vw', lg: '-4vw', xl: '-5vw'},
-                        minHeight: {md: '55vh', lg: '0vh'},
                     }}>
                         <Item sx={{
-                            fontSize: {sm: 10, md: 12, lg: 13, xl: 18},
                             position: 'relative',
                             top: '-2rem',
                             boxShadow: 0,
@@ -244,13 +242,14 @@ export const Home = () => {
                         <Item sx={{
                             position: 'relative',
                             width: '95%',
-                            top: '-3.5vw',
+                            top: '-2vw',
                             boxShadow: 0,
                         }}>
 
                             <hr></hr>
                         </Item>
                         <Item sx={{
+                                fontSize: '1.2vw',
                                 // borderCollapse: 'collapse',
                                 // border: '1px solid black',
                                 // borderRadius: '5px',
@@ -279,14 +278,15 @@ export const Home = () => {
                                 ul: {
                                     listStyleType: 'none',
                                     width: '100%',
+                                    marginLeft: '3%'
                                 },
 
                                 li: {
                                     display: 'block',
                                     float: 'left',
-                                    width: {md: '28%', lg: '7.5vw'},
-                                    marginLeft: {md: '5%', lg: '3vw'},
-                                    marginRight: {md: '6%', lg: '3vw'},
+                                    width: '28%',
+                                    marginLeft: '6%',
+                                    marginRight: '6%',
                                     border: '1px solid lightgrey',
                                     padding: '1%',
                                     borderRadius: 2,
@@ -296,7 +296,7 @@ export const Home = () => {
                                     marginTop: '20px',
                                     marginBottom: '20px',
                                     height: '55px',
-                                    // minHeight: '7vw',
+                                    minHeight: '7vh',
                                 }
 
                             }}>

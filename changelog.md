@@ -410,3 +410,8 @@ SyntaxError: Unexpected token (53:40)
     - Scaling on Home.js is much better
     - One idea: Why even have the description of the apps?
         - Just have the image and name in a table
+        - Followed that idea. Looks a lot better!
+    - Everything fixed in Dashboard
+        - Potentially the RPi health scaling isnt perfect, but that's changing anyway
+    - Everything fixed in Muscle Checker
+        - Except maybe background repeat
