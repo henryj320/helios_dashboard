@@ -405,3 +405,13 @@ SyntaxError: Unexpected token (53:40)
         - Using temporary ones for now
         - Changed the colour to #1B1F23. Looks really nice
 50. Merging the branch in.
+51. Fixing the scaling
+    - "md" Rpi_health needs to be split to two rows
+    - Scaling on Home.js is much better
+    - One idea: Why even have the description of the apps?
+        - Just have the image and name in a table
+        - Followed that idea. Looks a lot better!
+    - Everything fixed in Dashboard
+        - Potentially the RPi health scaling isnt perfect, but that's changing anyway
+    - Everything fixed in Muscle Checker
+        - Except maybe background repeat

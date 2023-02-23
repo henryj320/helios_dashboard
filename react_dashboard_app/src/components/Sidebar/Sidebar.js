@@ -35,7 +35,9 @@ export default function Sidebar() {
                     color: '#1B1F23',
                     marginLeft: '6%',
                     marginRight: '6%',
-                }
+                },
+
+                display: {xs: 'none', sm: 'none', md: 'block'}
             }}>
                 <Grid item lg={12}>
                     <Item sx={{

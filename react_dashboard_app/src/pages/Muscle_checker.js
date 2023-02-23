@@ -46,6 +46,7 @@ const ItemProperties = {
     //     // background: 'linear-gradient(to right bottom, grey, lightgrey)'
     //                     background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
     // },
+
 }
 
 // Receives the URL arguments
@@ -282,7 +283,7 @@ export const Muscle_checker = () => {
                         marginRight: '0%',
                         gap: 2,
                     }}>
-                        <Grid item xs={5.91}>
+                        <Grid item xs={12} lg={5.91}>
                             <Item sx={{
                                 padding: '2.5%',
                                 paddingLeft: '5%',
@@ -312,7 +313,7 @@ export const Muscle_checker = () => {
                                 </table>
                             </Item>
                         </Grid>
-                        <Grid item xs={5.91}>
+                        <Grid item xs={12} lg={5.91}>
                             <Item sx={{
                                 padding: '2.5%',
                                 paddingLeft: '5%',
@@ -365,14 +366,14 @@ export const Muscle_checker = () => {
                             </Item>
                         </Grid>
 
-                        <Grid item xs={2}>
+                        <Grid item xs={12} md={2}>
                             <Item sx={{
                                 padding: '2.5%',
                                 textAlign: 'center',
                                 fontSize: 'large',
                                 background: 'rgb(210, 210, 210)',
 
-                                
+                                marginBottom: {xs: '5vh', sm: '5vh', md: 0}
                             }}>
                                 <Link style={{color: '#444'}} className="link" to="/muscle_checker?v=1" target="" onClick={() => {window.location.href="/muscle_checker"}}><p>Back</p></Link>
                             </Item>
