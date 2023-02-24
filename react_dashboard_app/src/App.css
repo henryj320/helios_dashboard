@@ -88,6 +88,7 @@ html {
 #mainDiv {
   width: 77%;
   float: left;
+  
   padding: 20px;
 }
 
@@ -112,4 +113,31 @@ hr {
   background: rgb(240, 240, 240);
   border: 1px solid rgb(158, 158, 158);
   color: #666666;
+}
+
+
+.gridCard:hover {
+  transition: 1000ms;
+
+  transform: scale(1, 1.1);
+  transform: rotate(-0.00turn);
+}
+
+.gridCard:hover * {
+  background: #1B74E8;
+  transition: 250ms;
+  color: #F5F5F5;
+}
+
+.gridCard:hover img {
+  transition: 1000ms;
+  background: #48A2F1;
+  transform: rotate(0.05turn);
+  border: 1px solid #424242;
+}
+
+.link:hover * {
+  transition: 1000ms;
+  font-size: 1.2vw;
+  transform: rotate(0.01turn);
 }

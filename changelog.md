@@ -415,3 +415,6 @@ SyntaxError: Unexpected token (53:40)
         - Potentially the RPi health scaling isnt perfect, but that's changing anyway
     - Everything fixed in Muscle Checker
         - Except maybe background repeat
+52. Adding animations
+    - Decided to do it with CSS. Easier.
+    - Added colour change, rescale and rotation.

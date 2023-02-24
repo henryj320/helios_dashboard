@@ -229,7 +229,6 @@ export const Muscle_checker = () => {
 
                         marginLeft: '2vw',
                         maxWidth: '100%',
-                        marginRight: '0%',
                         gap: 2,
                         textAlign: 'center',
                     }}>

@@ -100,6 +100,15 @@ const ItemProperties = {
     // },
 }
 
+function hoverFunction(e) {
+    e.target.parentNode.style.background = 'red';
+    // e.target.child.style.background = 'red';
+}
+
+function unhoverFunction(e) {
+    e.target.parentNode.style.background = 'white';
+}
+
 export const Home = () => {
  
     return (
@@ -113,9 +122,11 @@ export const Home = () => {
                     maxWidth: '100%',
                     marginRight: '0%',
                     gap: 2,
+                    // transform: 'scale(1, 0.5)',
+                    transition: '100ms',
                 }}>
 
-                    <Grid item xs={3.7} md={3.7} lg={3.8}>
+                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
                         <Link to="/muscle_checker" target="">
                         <Item sx={newItemProperties}>
                             <table>
@@ -149,7 +160,7 @@ export const Home = () => {
                         </Link>
                     </Grid> */}
 
-                    <Grid item xs={3.7} md={3.7} lg={3.8}>
+                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
                         <Link to="/gym_calendar" target="">
                         <Item sx={newItemProperties}>
                             <table>
@@ -197,7 +208,7 @@ export const Home = () => {
                     </Grid> */}
 
                     
-                    <Grid item xs={3.7} md={3.7} lg={3.8}>
+                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
                         <Link to="https://github.com/henryj320" target="_blank">
                         <Item sx={newItemProperties}>
                             <table>
