@@ -54,10 +54,10 @@ export default function Sidebar() {
                             <li>GitHUb</li>
                         </ul> */}
 
-                        <Link class="link" to="/" target=""><span>Dashboard</span></Link>
-                        <Link class="link" to="/muscle_checker" target=""><span>Muscle Checker</span></Link>
-                        <span>Gym Calendar</span>
-                        <Link class="link" to="https://github.com/henryj320" target="_blank"><span>GitHub</span></Link>
+                        <Link className="link" to="/" target=""><span>Dashboard</span></Link>
+                        <Link className="link" to="/muscle_checker" target=""><span>Muscle Checker</span></Link>
+                        <span className="link">Gym Calendar</span>
+                        <Link className="link" to="https://github.com/henryj320" target="_blank"><span>GitHub</span></Link>
                     </Item>
                 </Grid>
             </Grid>
