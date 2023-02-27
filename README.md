@@ -2,7 +2,7 @@
 Last update: 2023-01-08 23:18
 <br><br>
 
-## muscle_checker
+## react_dashboard
 
 **Title**: react_dashboard
 
