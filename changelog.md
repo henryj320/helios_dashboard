@@ -420,3 +420,25 @@ SyntaxError: Unexpected token (53:40)
     - Added colour change, rescale and rotation.
 53. Code cleanup
     - Removing commented code, spaces, etc.
+54. Trying to run it on the RPi
+    - Added to the README how to run it
+    - ` npm start `
+        - "/usr/bin/node: bad option: --openssl-legacy-provider"
+            - Solution apparently is: ` npm install node --reinstall-packages-from=node `.
+    - "hwmon hwmon1: Undervoltage detected!"
+        - Restarting the Rpi
+    - Setting webadmin as the owner
+        - su
+        - sudo chown webadmin react_dashboard_app
+        - su webadmin
+    - npm start
+        - "EACCES: permission denied, open '.../node_modules/.cache/.eslintcache'
+            - ` rm /home/webadmin/Git_Repos/react_dashboard/react_dashboard_app/node_modules/.cache/.eslintcache `
+            - Nope, that didnt fix it.
+            - Created a *.eslintignore* file and added "*" to it.
+                - That worked!
+    - Running the api
+        - Alt + F2 to open another terminal.
+        - API did not have permission
+            - ` chown -R webadmin:webadmin react_dashboard `
+    - Need to add "," on Muscle Checker page between items.

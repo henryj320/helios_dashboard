@@ -45,6 +45,9 @@ const newItemProperties = {
 
 
 export const Home = () => {
+
+    document.title = 'React Dashboard';
+
     return (
         <div className="float-container">
 
