@@ -1,5 +1,5 @@
 # react_dashboard
-Last update: 2023-02-12 00:28
+Last update: 2023-02-27 23:58
 <br><br>
 
 ## Changelog for react_dashboard
@@ -418,3 +418,5 @@ SyntaxError: Unexpected token (53:40)
 52. Adding animations
     - Decided to do it with CSS. Easier.
     - Added colour change, rescale and rotation.
+53. Code cleanup
+    - Removing commented code, spaces, etc.

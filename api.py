@@ -2,10 +2,6 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
 
-
-# from ..muscle_checker.muscle_checker_script import *
-# import muscleChecker
-
 import react_dashboard_app.scripts.muscle_checker.muscle_checker_script as mc
 
 app = Flask(__name__)
@@ -23,8 +19,6 @@ class Muscle_checker(Resource):
 
     def get(self):
         """GETs the JSON response from muscle_checker."""
-
-        test_string = "Bench Press:\nTricep Pull-Downs:\nAbs for 8:\nSquats:"
 
         # Runs muscle_checker and sets data to the output JSON.
         data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')

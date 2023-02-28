@@ -1,8 +1,18 @@
 import React from "react";
 
+import Sidebar from '../components/Sidebar/Sidebar';
+
 export const Gym_calendar = () => {
     return (
-        <h1>Gym Calendar</h1>
+        <div className="float-container">
+
+            <Sidebar></Sidebar>
+
+            <div id="mainDiv">
+                <h1>Gym calendar</h1>
+            </div>
+
+        </div>
     )
 }
 

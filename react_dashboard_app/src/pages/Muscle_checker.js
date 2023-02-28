@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-
 import { useEffect } from "react";
-
+import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -9,18 +8,8 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
-
 import Sidebar from '../components/Sidebar/Sidebar';
 
-import { Link } from 'react-router-dom'
-
-
-const config = {
-    headers: {
-        "content-type": "application/json"
-        // "Access-Control-Allow-Origin": "*"
-    }
-}
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -39,28 +28,16 @@ const ItemProperties = {
     paddingLeft: '1.3vw',
     paddingRight: '1.3vw',
     fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
-    // // background:  'linear-gradient(to right bottom, lightgrey, #F5F5F5)',
-    // "&:hover": {
-    //     // Add what happens on hover
-    //     // cursor: 'pointer',
-    //     // background: 'linear-gradient(to right bottom, grey, lightgrey)'
-    //                     background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
-    // },
-
 }
 
-// Receives the URL arguments
-const queryParameters = new URLSearchParams(window.location.search)
-var page = queryParameters.get("page")
-console.log(page)
+// Receives the URL arguments.
+const queryParameters = new URLSearchParams(window.location.search);
+var page = queryParameters.get("page");
 
-var textInput = ""
+var textInput = "";
 
 export const Muscle_checker = () => {
-
-    // const [apiResponse, setResponse] = useState([])
-
-    // State to hold the response from the API
+    // State to hold the response from the API.
     const [apiData, setData] = useState({
         hit_muscle_groups: [],
         hit_muscles: [],
@@ -68,19 +45,16 @@ export const Muscle_checker = () => {
         suggestions: []
     })
 
-    // const [textInput, setText] = useState("initial")
-
-    // Runs getResponse() once when the page loads.s
+    // Runs getResponse() once when the page loads.
     useEffect(
         () => {
 
             document.title = 'Muscle Checker';
 
-            // Only GETs the response if the page is the Results Page
+            // Only GETs the response if the page is the Results Page.
             if (page == 2) {
-                getResponse()
+                getResponse();
             }
-            
         }, []
     )
 
@@ -88,20 +62,7 @@ export const Muscle_checker = () => {
     // Asynchronous method to get the data from the API.
     const getResponse = async () => {
 
-        let base_url = 'http://127.0.0.1:4000/muscle_checker'
-        base_url = 'http://192.168.1.101:4000/muscle_checker'
-        // base_url = 'http://localhost:4000/muscle_checker'
-
-
-
-        // React.useEffect(() => {
-        //     axios.get(base_url).then((response) => {
-        //         console.log(response)
-        //     });
-        // }, []);
-
-        // input_text = String(input_text)
-        // console.log(input_text)
+        let base_url = 'http://192.168.1.101:4000/muscle_checker';
 
         var requestData = {
             "text": textInput
@@ -114,76 +75,24 @@ export const Muscle_checker = () => {
         // POST request to update the insert_calendar_text.txt file.
         axios.put(base_url, requestData, {headers: headers}).then((response) => {
 
-            console.log(response)
             console.log("insert_calendar_text.txt update was successful.");
 
             if (response.status == 200) {
-
                 // GET request to retrieve the response from the API.
                 axios.get(base_url).then((response) => {
-                    console.log(response);
-
                     if (response.status == 200) {
-
-                        // setResponse([
-                        //     response.data.data.hit_muscle_groups
-                        // ])
-
                         setData(response.data.data)
-
                     }
-
-
-                    //setResponse(response)
-
-                    // this.setState({ response })
                 });
-
             }
-
         })
+
         .catch((error) => {
             console.log(error)
         })
 
-
-
-        
-
     };
-
-    // function changePage(page) {
-    //     if (page == 2) {
-    //         page = 1
-    //     } else {
-    //         page = 2
-    //     }
-    //     console.log(page)
-    // }
-
-
-    console.log(apiData)
     
-    // getResponse()
-
-    // if (page == 2) {
-    //     return (
-    //         <>
-    //             <h1>Muscle Checker</h1>
-    //             <p>Response is: {apiData.hit_muscle_groups}</p>
-    //             <p>page: {page}</p>
-    
-    //         </>
-    //     )
-
-    // } else {
-    
-    // function returnMuscles() {
-    //     console.log("Entered")
-    // }
-
-    
-
         // Main method run when the form is submitted.
         function returnMuscles() {
 
@@ -200,24 +109,13 @@ export const Muscle_checker = () => {
 
             // Updates the state of textInput.
             var text_input = form.text_input.value.toString();
-            
-            // setText(text_input); 
 
-            // setText("Hekl")
-            textInput = text_input
+            textInput = text_input;
 
-            console.log(text_input)
-            console.log(textInput)
-
-            getResponse()
-
-
-
-            console.log(apiData);
+            getResponse();
 
         };
 
-        console.log(page);
 
         return (
             <div className="float-container">
@@ -226,7 +124,6 @@ export const Muscle_checker = () => {
     
                 <div id="mainDiv">
                     <Grid container spacing={4} sx={{
-
                         marginLeft: '2vw',
                         maxWidth: '100%',
                         gap: 2,
@@ -254,26 +151,17 @@ export const Muscle_checker = () => {
                         marginRight: '0%',
                         gap: 2,
                     }}>
-                    
                         <Grid item xs={12}>
                             <Item sx={ItemProperties}>
-
-
                                 <div>
-
-                                    {/* <p>page: {page}</p> */}
-
                                     <form id="mainForm">
                                         <textarea id="text_input" name="text_input" rows="14" cols="50" defaultValue="Insert your calendar text here."></textarea>
                                         <br></br><br></br>
                                         <button onClick={() => returnMuscles()}>Submit</button>
                                     </form>
-
-
                                 </div>
                             </Item>
                         </Grid>
-    
                     </Grid>
 
                     <Grid id="resultsDiv" container spacing={4} sx={{
@@ -345,7 +233,6 @@ export const Muscle_checker = () => {
                                     </tr>
                                     </tbody>
                                 </table>
-
                             </Item>
                         </Grid>
                         <Grid item xs={12}>
@@ -364,30 +251,21 @@ export const Muscle_checker = () => {
                                 <p>{apiData.suggestions[9]}</p>
                             </Item>
                         </Grid>
-
                         <Grid item xs={12} md={2}>
                             <Item sx={{
                                 padding: '2.5%',
                                 textAlign: 'center',
                                 fontSize: 'large',
                                 background: 'rgb(210, 210, 210)',
-
                                 marginBottom: {xs: '5vh', sm: '5vh', md: 0}
                             }}>
                                 <Link style={{color: '#444'}} className="link" to="/muscle_checker?v=1" target="" onClick={() => {window.location.href="/muscle_checker"}}><p>Back</p></Link>
                             </Item>
                         </Grid>
-
                     </Grid>
-
-
                 </div>
             </div>
         )
-
-    // }
 }
-
-
 
 export default Muscle_checker
