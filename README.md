@@ -16,29 +16,37 @@ Last update: 2023-02-27 23:59
 
 **Result**: The first form of the React Dashboard is now complete. The Dashboard and Muscle Checker pages are fully-functional, but Gym Calendar and RPi Health need to be completed.
 
-**Running the Project**: To run the project, follow these steps:
-1. Run "git clone ...".
-2. cd in the "react_dashboad_app" directory
-3. In one terminal, run the React app:
+View the [changelog](changelog.md) here.
+
+---
+
+### Running the Project
+
+To run the project, follow these steps:
+
+#### Cloning the Repository
+First, ` git clone ` the repository. Open it in a terminal or IDE and ` cd ` into the "react_dashboad_app" directory.
+
+#### Running the React App
+You will need two terminals - one to run the React app and another to run the backend API. In one terminal, run the React app using the commands below:
 ``` bash
-sudo apt install nodejs
+sudo apt install nodejs  # Required packages to use React.
 sudo apt install npm
 
-npm install
-npm start
+npm install  # Installs all packages required by the app.
+npm start  # Runs the app.
 ```
-If you receive the error: "/usr/bin/node: bad option: --openssl-legacy-provider" then run ` npm install node --reinstall-packages-from=node `.
+If you receive the error: "*/usr/bin/node: bad option: --openssl-legacy-provider*" then run ` npm install node --reinstall-packages-from=node `.
 
+#### Running the API
+First, you will need to change the "base_url" parameter inside of "src/pages/*Muscle_checker.js*" to be the correct IP:Port pair. This needs to be the IP:Port pair that the API is run on. If you do not know the IP:Port pair, follow the steps below, change the file and then rerun the API.
 
-4. In another terminal, run the API with:
+In another terminal, you will need to run the API. Run:
 ``` bash
-python3 -m venv venv
+python3 -m venv venv  # Creates and runs a new virtual environment.
 . venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r requirements.txt  # Installs the packages required by the backend.
 
-python3 ../api.py
+python3 ../api.py  # Runs the API.
 ```
-You will also need to change the "base_url" parameter inside of "src/pages/*Muscle_checker.js*" to be the correct IP:Port pair.
-
-View the [changelog](changelog.md) here.
