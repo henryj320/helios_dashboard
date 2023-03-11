@@ -72,7 +72,7 @@ export const Muscle_checker = () => {
             'Content-Type': 'application/json'
         }
 
-        // POST request to update the insert_calendar_text.txt file.
+        // PUT request to update the insert_calendar_text.txt file.
         axios.put(base_url, requestData, {headers: headers}).then((response) => {
 
             console.log("insert_calendar_text.txt update was successful.");

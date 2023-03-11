@@ -450,3 +450,12 @@ SyntaxError: Unexpected token (53:40)
 55. Adding rpi_health to api.
     - ` . venv/bin/activate `.
     - ` python ../api.py `.
+    - Fixed bug where uptime didn't work properly if days running < 1.
+    - Adding it to api.py
+    - Splitting into GET and POST
+        - GET the current health metrics
+        - POST the current health metrics into *records.json* and then return *records.json*
+    - Tested they work with HTTP Client extension.
+56. Calling rpi_health in React.
+    - Added it to Rpi_health.js
+    - Completely working, except it does say uptime is "1 days"

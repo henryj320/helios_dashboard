@@ -6,6 +6,7 @@ import react_dashboard_app.scripts.muscle_checker.muscle_checker_script as mc
 
 import react_dashboard_app.scripts.rpi_health.rpi_health as rh
 
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -59,15 +60,21 @@ class Rpi_health(Resource):
     """
 
     def get(self):
-        """GETs the latest health metrics and then returns all entries in records.json."""
+        """GETs the latest health metrics only. No records.json update."""
+
+        data = rh.get_health()  # Collects the latest health metrics and then returns all entries in records.json.
+
+        return {'data': data}, 200  # 200 OK code.
+    
+
+    def post(self):
+        """POSTs the latest health metrics and then returns all entries in records.json."""
 
         data = rh.run()  # Collects the latest health metrics and then returns all entries in records.json.
 
         return {'data': data}, 200  # 200 OK code.
 
-
 api.add_resource(Rpi_health, '/rpi_health')
-
 
 
 if __name__ == '__main__':

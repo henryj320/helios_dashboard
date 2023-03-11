@@ -146,7 +146,11 @@ def convert_uptime(uptime: str) -> list:
     """
     days = uptime.split(" ")
     time = days[len(days) - 1]  # Contains HH:MM:SS.123456
-    days = days[0]
+
+    if len(days) == 1:
+        days = "0"  # If the computer has been running for 0 days.
+    else:
+        days = days[0]  # If the computer has been running for 1 or more days.
 
     time_split = time.split(".")[0]
     time_split = time_split.split(":")
