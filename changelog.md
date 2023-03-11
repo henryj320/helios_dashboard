@@ -4,6 +4,8 @@ Last update: 2023-02-27 23:58
 
 ## Changelog for react_dashboard
 
+### Sprint 1
+
 1. Created the project and README.
 
 Following the tutorial [here](https://reactjs.org/docs/create-a-new-react-app.html):
@@ -442,3 +444,9 @@ SyntaxError: Unexpected token (53:40)
         - API did not have permission
             - ` chown -R webadmin:webadmin react_dashboard `
     - Need to add "," on Muscle Checker page between items.
+
+### Sprint 2
+
+55. Adding rpi_health to api.
+    - ` . venv/bin/activate `.
+    - ` python ../api.py `.
