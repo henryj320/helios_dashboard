@@ -459,3 +459,11 @@ SyntaxError: Unexpected token (53:40)
 56. Calling rpi_health in React.
     - Added it to Rpi_health.js
     - Completely working, except it does say uptime is "1 days"
+57. Making the rpi_health images
+    - Drew them out
+    - Making them on Pinta
+        - Not very good. Switching to paint.net
+    - Switched to Windows
+    - Finished temp and cpu.
+    - Keeps saying something is running on another port
+        - ` fuser -k 4000/tcp `

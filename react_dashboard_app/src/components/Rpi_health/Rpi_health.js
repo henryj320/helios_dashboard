@@ -3,6 +3,14 @@ import { useEffect } from "react";
 
 import axios from 'axios'
 
+import health_logo from '../../assets/images/rpi_health/health_logo.png'
+import health_cpu from '../../assets/images/rpi_health/health_cpu.png'
+import health_ip from '../../assets/images/rpi_health/health_ip.png'
+import health_temperature from '../../assets/images/rpi_health/health_temperature.png'
+import health_memory_percentage from '../../assets/images/rpi_health/health_memory_percentage.png'
+import health_memory from '../../assets/images/rpi_health/health_memory.png'
+import health_uptime from '../../assets/images/rpi_health/health_uptime.png'
+
 
 export default function Rpi_health() {
 
@@ -51,15 +59,42 @@ export default function Rpi_health() {
     }
 
     return (
-            <ul onLoad={() => getResponse()}>
-                <li>
-                    Uptime:
-                    <br></br>
-                    {apiData.uptime[0]} days, {apiData.uptime[1]} hrs, {apiData.uptime[2]} mins
-                </li>
-                <li>System Load:<br></br>{apiData.cpu_percent}%</li>
-                <li>Memory Load:<br></br>{apiData.memory_percent}%</li>
-                <li>IP Address:<br></br>192.169.1.109</li>
-            </ul>
+        <>
+            <table id="rpiHealthTable" onLoad={() => getResponse()} sx={{
+            }}>
+                <tbody>
+                    <tr>
+                        <td class="rpiHealthTableImg"><img src={health_cpu} alt="Logo"/></td>
+                        <td class="rpiHealthTableTxt">{apiData.cpu_percent}%</td>
+
+                        <td class="rpiHealthTableGap"></td>
+
+                        <td class="rpiHealthTableImg"><img src={health_memory} alt="Logo"/></td>
+                        <td class="rpiHealthTableTxt">{apiData.memory_used} GB / {apiData.memory_total} GB</td>
+
+                        <td class="rpiHealthTableGap"></td>
+
+                        <td class="rpiHealthTableImg"><img src={health_uptime} alt="Logo"/></td>
+                        <td class="rpiHealthTableTxt">{apiData.uptime[0]} days, {apiData.uptime[1]} hrs, {apiData.uptime[2]} mins</td>
+                    </tr>
+                    <br></br><br></br>
+                    <tr>
+                        <td class="rpiHealthTableImg"><img src={health_temperature} alt="Logo"/></td>
+                        <td class="rpiHealthTableTxt">{apiData.temp}°c</td>
+
+                        <td class="rpiHealthTableGap"></td>
+
+                        <td class="rpiHealthTableImg"><img src={health_memory_percentage} alt="Logo"/></td>
+                        <td class="rpiHealthTableTxt">{apiData.memory_percent}%</td>
+
+                        <td class="rpiHealthTableGap"></td>
+
+                        <td class="rpiHealthTableImg"><img src={health_ip} alt="Logo"/></td>
+                        <td class="rpiHealthTableTxt">192.169.1.109</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br></br>
+        </>  
     )
 }

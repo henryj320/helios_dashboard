@@ -137,45 +137,29 @@ export const Home = () => {
 
                         </Item>
                         <Item sx={{
-                            position: 'relative',
-                            width: '95%',
-                            top: '-2vw',
-                            boxShadow: 0,
-                        }}>
-
-                            <hr></hr>
-                        </Item>
-                        <Item sx={{
                                 fontSize: '1.2vw',
                                 boxShadow: 0,
                                 textAlign: 'center',
                                 width: '100%',
-                                top: '-3vw',
-                                position: 'relative',
                                 background: 'none',
+                                marginLeft: 'auto',
+                                marginRight: 'auto',
 
-                                ul: {
-                                    listStyleType: 'none',
-                                    width: '100%',
-                                    marginLeft: '3%'
+                                table: {
+                                    // border: '1px solid red',
+                                    width: '66vw'
                                 },
 
-                                li: {
-                                    display: 'block',
-                                    float: 'left',
-                                    width: '28%',
-                                    marginLeft: '6%',
-                                    marginRight: '6%',
-                                    border: '1px solid lightgrey',
-                                    padding: '1%',
-                                    borderRadius: 2,
-                                    boxShadow: 3,
-                                    background: '#F5F5F5',
-                                    marginTop: '20px',
-                                    marginBottom: '20px',
-                                    height: '55px',
-                                    minHeight: '7vh',
-                                }
+                                img: {
+                                    width: '100%',
+                                    // border: '1px solid black',
+                                    // borderRadius: '12px',
+                                    // background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
+
+                                },
+
+
+
 
                             }}>
                             <Rpi_health ></Rpi_health>
