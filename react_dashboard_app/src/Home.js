@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import mc_logo from './assets/images/muscle_checker_logo_1.png'
 import autogen_logo from './assets/images/no_symbol.png'
 import github_logo from './assets/images/github_logo.png'
+import health_logo from './assets/images/rpi_health/health_logo.png'
 
 import Rpi_health from './components/Rpi_health/Rpi_health';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -129,14 +130,6 @@ export const Home = () => {
                         display: {xs: 'none', sm: 'block'}
                     }}>
                         <Item sx={{
-                            position: 'relative',
-                            top: '-2rem',
-                            boxShadow: 0,
-                        }}>
-                            <h2>Raspberry Pi Health</h2>
-
-                        </Item>
-                        <Item sx={{
                                 fontSize: '1.2vw',
                                 boxShadow: 0,
                                 textAlign: 'center',
@@ -147,7 +140,8 @@ export const Home = () => {
 
                                 table: {
                                     // border: '1px solid red',
-                                    width: '66vw'
+                                    width: '62vw',
+                                    marginLeft: '3vw'
                                 },
 
                                 img: {
@@ -162,6 +156,19 @@ export const Home = () => {
 
 
                             }}>
+
+                            <table id="rpiTitleTable">
+                                <tbody>
+                                    <tr>
+                                        <td id="rpiTitleImgTD">
+                                            <img src={health_logo} alt="Logo"/>
+                                        </td>
+                                        <td id="rpiTitleHeaderTD">
+                                            <h2>Raspberry Pi Health</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <Rpi_health ></Rpi_health>
                         </Item>
                     </Grid>

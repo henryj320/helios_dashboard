@@ -467,3 +467,8 @@ SyntaxError: Unexpected token (53:40)
     - Finished temp and cpu.
     - Keeps saying something is running on another port
         - ` fuser -k 4000/tcp `
+58. Adding the layout
+    - Pictures added
+    - API calls made
+    - Progress bars added
+    - Added the title
