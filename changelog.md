@@ -480,6 +480,8 @@ SyntaxError: Unexpected token (53:40)
         - Removing again
 60. Adding testing
     - Added an alert if the API call fails
+        - Messes up on muscle_checker
+            - TODO: Fix that
     - Removed rpi_health if too small
     - pycodestyle and pydocstyle on api.py
         - ` pycodestyle ../apy.py `
@@ -502,3 +504,8 @@ SyntaxError: Unexpected token (53:40)
             - Imports ThemeProvider from material
             - Imports theme from /components/site_theme
             - Wraps everything in a theme provider
+    - Added theming for everything except the body background
+    - How do switch between them?
+        - Maybe a usestate 
+            - Could update the theme on button press
+62. Creating another theme

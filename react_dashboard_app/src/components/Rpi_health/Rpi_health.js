@@ -110,7 +110,7 @@ export default function Rpi_health() {
             }
         }).catch(function (error) {
             // Entered if the API GET call fails.
-            alert("\nAPI call failed with error: \n" + error.code)
+            // alert("\nAPI call failed with error: \n" + error.code)
         })
 
 

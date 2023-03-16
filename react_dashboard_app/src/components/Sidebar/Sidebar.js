@@ -7,6 +7,12 @@ import Grid from '@mui/material/Grid';
 
 import { Link } from 'react-router-dom'
 
+
+
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../../assets/theme/site-theme'
+
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -23,17 +29,22 @@ export default function Sidebar() {
 
                 span: {
                     borderRadius: 2,
+                    border: 'none',
+
                     padding: '1.5vw',
                     display: 'block',
-                    marginTop: '2.5vh',
-                    border: 'none',
-                    background: '#F5F5F5',
+                    
                     boxShadow: 3,
-                    background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
-                    fontSize: '1vw',
-                    color: '#1B1F23',
+
+                    background: theme.img.background,
+                    
+                    marginTop: '2.5vh',
                     marginLeft: '6%',
                     marginRight: '6%',
+
+                    fontSize: '1vw',
+
+                    color: theme.palette.text.secondary,
                 },
             }}>
                 <Grid item lg={12}>
@@ -42,7 +53,7 @@ export default function Sidebar() {
                         borderRadius: 2,
                         boxShadow: 5,
                         border: '1px solid grey',
-                        background: 'linear-gradient(to right bottom, #262628, #1A1A1A)',
+                        background: theme.palette.background.secondary,
                     }}>
                         <Link className="link" to="/" target=""><span>Dashboard</span></Link>
                         <Link className="link" to="/muscle_checker" target=""><span>Muscle Checker</span></Link>

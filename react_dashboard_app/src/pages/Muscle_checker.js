@@ -10,24 +10,38 @@ import Grid from '@mui/material/Grid';
 
 import Sidebar from '../components/Sidebar/Sidebar';
 
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../assets/theme/site-theme'
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    color: theme.palette.text.secondary,
-}));
+
+const Item = Paper;
 
 const ItemProperties = {
     borderRadius: 2,
-    boxShadow: 5,
     border: '1px solid lightgrey',
+
+    boxShadow: 5,
     minHeight: {sm: '30px', md: '80px', lg: '80px'},
+
     paddingTop: '2vw',
     paddingBottom: '2vw',
     paddingLeft: '1.3vw',
     paddingRight: '1.3vw',
+
     fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
+
+    textarea: {
+        color: theme.palette.text.primary,
+        background: theme.palette.background.textarea
+    },
+
+    button: {
+        color: theme.palette.text.primary,
+        background: theme.palette.background.buttons
+    },
+
+    background: theme.palette.background.primary
+
 }
 
 // Receives the URL arguments.
@@ -118,6 +132,8 @@ export const Muscle_checker = () => {
 
 
         return (
+
+            <ThemeProvider theme={theme}>
             <div className="float-container">
     
                 <Sidebar></Sidebar>
@@ -131,12 +147,17 @@ export const Muscle_checker = () => {
                     }}>
                         <Grid item xs={12}>
                             <Item sx={{
-                                borderRadius: 2,
                                 boxShadow: 5,
+
+                                borderRadius: 2,
                                 border: '1px solid lightgrey',
+
                                 paddingLeft: '1.3vw',
                                 paddingRight: '1.3vw',
+
                                 fontSize: 18,
+
+                                background: theme.palette.background.primary
                             }}>
                                 <h1>Muscle Checker</h1>
                             </Item>
@@ -147,9 +168,11 @@ export const Muscle_checker = () => {
 
                     <Grid id="initialDiv" container spacing={4} sx={{
                         marginLeft: '2vw',
-                        maxWidth: '100%',
                         marginRight: '0%',
+
+                        maxWidth: '100%',
                         gap: 2,
+
                     }}>
                         <Grid item xs={12}>
                             <Item sx={ItemProperties}>
@@ -166,14 +189,16 @@ export const Muscle_checker = () => {
 
                     <Grid id="resultsDiv" container spacing={4} sx={{
                         marginLeft: '2vw',
-                        maxWidth: '100%',
                         marginRight: '0%',
+
+                        maxWidth: '100%',
                         gap: 2,
                     }}>
                         <Grid item xs={12} lg={5.91}>
                             <Item sx={{
                                 padding: '2.5%',
                                 paddingLeft: '5%',
+
                                 minHeight: '10vh',
                                 maxHeight: '10vh',
 
@@ -183,7 +208,9 @@ export const Muscle_checker = () => {
 
                                 td: {
                                     width: '50%'
-                                }
+                                },
+
+                                background: theme.palette.background.primary
                             }}>
                                 <br></br>
                                 <table>
@@ -204,6 +231,7 @@ export const Muscle_checker = () => {
                             <Item sx={{
                                 padding: '2.5%',
                                 paddingLeft: '5%',
+
                                 minHeight: '10vh',
                                 maxHeight: '10vh',
 
@@ -213,7 +241,9 @@ export const Muscle_checker = () => {
 
                                 td: {
                                     width: '25%'
-                                }
+                                },
+
+                                background: theme.palette.background.primary
                             }}>
                                 <br></br>
                                 <table>
@@ -238,6 +268,8 @@ export const Muscle_checker = () => {
                         <Grid item xs={12}>
                             <Item sx={{
                                 padding: '2.5%',
+
+                                background: theme.palette.background.primary
                             }}>
                                 <p>{apiData.suggestions[0]}</p>
                                 <p>{apiData.suggestions[1]}</p>
@@ -254,10 +286,14 @@ export const Muscle_checker = () => {
                         <Grid item xs={12} md={2}>
                             <Item sx={{
                                 padding: '2.5%',
+
                                 textAlign: 'center',
                                 fontSize: 'large',
-                                background: 'rgb(210, 210, 210)',
-                                marginBottom: {xs: '5vh', sm: '5vh', md: 0}
+
+                                background: theme.palette.background.buttons,
+                                
+                                marginBottom: {xs: '5vh', sm: '5vh', md: 0},
+
                             }}>
                                 <Link style={{color: '#444'}} className="link" to="/muscle_checker?v=1" target="" onClick={() => {window.location.href="/muscle_checker"}}><p>Back</p></Link>
                             </Item>
@@ -265,6 +301,7 @@ export const Muscle_checker = () => {
                     </Grid>
                 </div>
             </div>
+            </ThemeProvider>
         )
 }
 

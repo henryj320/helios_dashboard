@@ -16,6 +16,9 @@ import health_logo from './assets/images/rpi_health/health_logo.png'
 import Rpi_health from './components/Rpi_health/Rpi_health';
 import Sidebar from './components/Sidebar/Sidebar';
 
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './assets/theme/site-theme'
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -26,20 +29,32 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 const newItemProperties = {
+
+    background: theme.palette.background.primary,
+
     marginTop: '0.5vw',
-    borderRadius: 2,
-    boxShadow: 5,
-    border: '1px solid lightgrey',
+
     paddingLeft: '1.3vw',
     paddingRight: '1.3vw',
+    
+    boxShadow: 5,
+
+    borderRadius: 2,
+    border: '1px solid lightgrey',
+
     fontSize: '1vw',
+
+    color: theme.palette.text.primary,
 
     img: {
         boxShadow: 2,
+
         width: '6vw',
+
         border: '1px solid #1B1F23',
         borderRadius: '12px',
-        background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
+
+        background: theme.img.background,
     },
 
     table: {
@@ -53,6 +68,7 @@ export const Home = () => {
     document.title = 'React Dashboard';
 
     return (
+        <ThemeProvider theme={theme}>
         <div className="float-container">
 
             <Sidebar></Sidebar>
@@ -60,9 +76,11 @@ export const Home = () => {
             <div id="mainDiv">
                 <Grid container spacing={4} sx={{
                     marginLeft: '2vw',
-                    maxWidth: '100%',
                     marginRight: '0%',
+
+                    maxWidth: '100%',
                     gap: 2,
+
                     transition: '100ms',
                 }}>
                     <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
@@ -125,21 +143,31 @@ export const Home = () => {
                     <Grid item sm={11.4} md={11.15} lg={11.4} xl={11.4} sx={{
                         marginTop: '1.5vw',
                         marginLeft: {xs: '5.5vw', sm: '4vw', md: '3vw', lg: '2.25vw', xl: '1.7vw'},
+
                         borderRadius: 2,
-                        boxShadow: 5,
                         border: '1px solid lightgrey',
+
+                        boxShadow: 5,
+                        
                         minHeight: '18vh',
                         maxHeight: '55vh',
+
                         paddingTop: {sm: '35%', md: '30%', lg: '23%'},
-                        background: 'white',
+
+                        background: theme.palette.background.primary,
+
                         display: {sm: 'none', md: 'block'},
                     }}>
                         <Item sx={{
                                 fontSize: '1.2vw',
-                                boxShadow: 0,
                                 textAlign: 'center',
+
+                                boxShadow: 0,
+                                
                                 width: '100%',
+
                                 background: 'none',
+
                                 marginLeft: 'auto',
                                 marginRight: 'auto',
 
@@ -156,6 +184,8 @@ export const Home = () => {
                                     // background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
 
                                 },
+
+                                color: theme.palette.text.primary,
 
 
 
@@ -181,5 +211,6 @@ export const Home = () => {
                 </Grid>
             </div>
         </div>
+        </ThemeProvider>
     )
 }
