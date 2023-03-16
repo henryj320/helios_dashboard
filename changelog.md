@@ -471,4 +471,8 @@ SyntaxError: Unexpected token (53:40)
     - Pictures added
     - API calls made
     - Progress bars added
+        - Temp
+        - CPU Usage
+        - Memory Usage
     - Added the title
+59. Adding the other links (strava, youtube, google calendar)

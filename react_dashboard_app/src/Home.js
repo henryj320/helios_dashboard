@@ -8,6 +8,9 @@ import Grid from '@mui/material/Grid';
 import mc_logo from './assets/images/muscle_checker_logo_1.png'
 import autogen_logo from './assets/images/no_symbol.png'
 import github_logo from './assets/images/github_logo.png'
+import ggl_calendar_logo from './assets/images/ggl_calendar_logo.png'
+import youtube_logo from './assets/images/youtube_logo.png'
+import strava_logo from './assets/images/strava_logo.png'
 import health_logo from './assets/images/rpi_health/health_logo.png'
 
 import Rpi_health from './components/Rpi_health/Rpi_health';
@@ -117,6 +120,63 @@ export const Home = () => {
                         </Link>
                     </Grid>
 
+                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
+                        <Link to="https://calendar.google.com/" target="">
+                        <Item sx={newItemProperties}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td className="imageTD">
+                                            <img src={ggl_calendar_logo} alt="Logo"/>
+                                        </td>
+                                        <td>
+                                            <h2>Calendar</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Item>
+                        </Link>
+                    </Grid>
+
+                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
+                        <Link to="https://www.youtube.com/" target="">
+                        <Item sx={newItemProperties}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td className="imageTD">
+                                            <img src={youtube_logo} alt="Logo"/>
+                                        </td>
+                                        <td>
+                                            <h2>YouTube</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Item>
+                        </Link>
+                    </Grid>
+
+                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
+                        <Link to="https://www.strava.com/dashboard" target="">
+                        <Item sx={newItemProperties}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td className="imageTD">
+                                            <img src={strava_logo} alt="Logo"/>
+                                        </td>
+                                        <td>
+                                            <h2>Strava</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Item>
+                        </Link>
+                    </Grid>
+
                     <Grid item sm={11.4} md={11.15} lg={11.4} xl={11.4} sx={{
                         marginTop: '1.5vw',
                         marginLeft: {xs: '5.5vw', sm: '4vw', md: '3vw', lg: '2.25vw', xl: '1.7vw'},
@@ -164,7 +224,7 @@ export const Home = () => {
                                             <img src={health_logo} alt="Logo"/>
                                         </td>
                                         <td id="rpiTitleHeaderTD">
-                                            <h2>Raspberry Pi Health</h2>
+                                            <h2>Server Health</h2>
                                         </td>
                                     </tr>
                                 </tbody>

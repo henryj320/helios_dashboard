@@ -43,10 +43,11 @@
 }
 
 body {
-  background: linear-gradient(to right bottom, lightgrey, #888888);
+  /* background: linear-gradient(to right bottom, lightgrey, #888888); */
   background-repeat: round;
   /* #F5F5F5 */
   overflow-x: hidden;
+  background: #888888;
 }
 
 html {

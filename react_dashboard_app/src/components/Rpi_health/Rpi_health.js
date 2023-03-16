@@ -80,6 +80,30 @@ export default function Rpi_health() {
                 } else {
                     progressMemoryDiv.style = "background: linear-gradient(65deg, rgba(77, 173, 21,1)" + response.data.data["memory_percent"] + "%, white " + progressMemoryTop + "%)";
                 }
+
+
+                // Sets progress bar for Memory % usage.
+                var progressTempDiv = document.getElementById("tempProgressBar");
+                // Adjusts it so that 20 degrees is 0% filled bar
+                var adjustedTemp = parseFloat(response.data.data["temp"])
+                if (adjustedTemp > 20) {
+                    adjustedTemp = adjustedTemp - 20;
+                } else {
+                    adjustedTemp = 0
+                }
+                // Sets the upper bound of the bar.
+                var progressTempTop = parseFloat(adjustedTemp) + 5;
+                if (parseFloat(progressTempTop) > 100) {
+                    progressTempTop = 100;
+                }
+                // Sets the progress bar colour based on temperature
+                if (parseFloat(response.data.data["temp"]) > 75) {
+                    progressTempDiv.style = "background: linear-gradient(65deg, red" + adjustedTemp + "%, white " + progressTempTop + "%)";
+                } else if (parseFloat(response.data.data["temp"]) > 50) {
+                    progressTempDiv.style = "background: linear-gradient(65deg, rgba(222, 196, 24,1)" + adjustedTemp + "%, white " + progressTempTop + "%)";
+                } else {
+                    progressTempDiv.style = "background: linear-gradient(65deg, rgba(77, 173, 21,1)" + adjustedTemp + "%, white " + progressTempTop + "%)";
+                }
                 
 
                 
@@ -132,12 +156,15 @@ export default function Rpi_health() {
                         <td class="rpiHealthTableGap"></td>
 
                         <td class="rpiHealthTableImg"><img src={health_uptime} alt="Logo"/></td>
-                        <td class="rpiHealthTableTxt">{apiData.uptime[0]} days, {apiData.uptime[1]} hrs, {apiData.uptime[2]} mins</td>
+                        <td class="rpiHealthTableTxt">{apiData.uptime[0]} days, {apiData.uptime[1]} hours, {apiData.uptime[2]} minutes</td>
                     </tr>
                     <br></br><br></br>
                     <tr>
                         <td class="rpiHealthTableImg"><img src={health_temperature} alt="Logo"/></td>
-                        <td class="rpiHealthTableTxt">{apiData.temp}°c</td>
+                        <td class="rpiHealthTableTxt">
+                            {apiData.temp}°c
+                            <div id="tempProgressBar" class="healthProgressBars"></div>
+                        </td>
 
                         <td class="rpiHealthTableGap"></td>
 
