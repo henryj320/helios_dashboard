@@ -83,42 +83,6 @@ export const Home = () => {
                         </Item>
                         </Link>
                     </Grid>
-                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
-                        <Link to="/gym_calendar" target="">
-                        <Item sx={newItemProperties}>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td className="imageTD">
-                                            <img src={autogen_logo} alt="Logo"/>
-                                        </td>
-                                        <td>
-                                            <h2>Gym Calendar</h2>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </Item>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
-                        <Link to="https://github.com/henryj320" target="_blank">
-                        <Item sx={newItemProperties}>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td className="imageTD">
-                                            <img src={github_logo} alt="Logo"/>
-                                        </td>
-                                        <td>
-                                            <h2>GitHub</h2>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </Item>
-                        </Link>
-                    </Grid>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
                         <Link to="https://calendar.google.com/" target="">
@@ -140,35 +104,16 @@ export const Home = () => {
                     </Grid>
 
                     <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
-                        <Link to="https://www.youtube.com/" target="">
+                        <Link to="https://github.com/henryj320" target="_blank">
                         <Item sx={newItemProperties}>
                             <table>
                                 <tbody>
                                     <tr>
                                         <td className="imageTD">
-                                            <img src={youtube_logo} alt="Logo"/>
+                                            <img src={github_logo} alt="Logo"/>
                                         </td>
                                         <td>
-                                            <h2>YouTube</h2>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </Item>
-                        </Link>
-                    </Grid>
-
-                    <Grid item xs={3.7} md={3.7} lg={3.8} className="gridCard">
-                        <Link to="https://www.strava.com/dashboard" target="">
-                        <Item sx={newItemProperties}>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td className="imageTD">
-                                            <img src={strava_logo} alt="Logo"/>
-                                        </td>
-                                        <td>
-                                            <h2>Strava</h2>
+                                            <h2>GitHub</h2>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -187,7 +132,7 @@ export const Home = () => {
                         maxHeight: '55vh',
                         paddingTop: {sm: '35%', md: '30%', lg: '23%'},
                         background: 'white',
-                        display: {xs: 'none', sm: 'block'}
+                        display: {sm: 'none', md: 'block'},
                     }}>
                         <Item sx={{
                                 fontSize: '1.2vw',
@@ -211,6 +156,7 @@ export const Home = () => {
                                     // background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
 
                                 },
+
 
 
 

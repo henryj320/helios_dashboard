@@ -476,3 +476,29 @@ SyntaxError: Unexpected token (53:40)
         - Memory Usage
     - Added the title
 59. Adding the other links (strava, youtube, google calendar)
+    - Don't like the look
+        - Removing again
+60. Adding testing
+    - Added an alert if the API call fails
+    - Removed rpi_health if too small
+    - pycodestyle and pydocstyle on api.py
+        - ` pycodestyle ../apy.py `
+        - ` pydocstyle ../apy.py `
+61. Adding a theme
+    - Looking at how the Material Dashboard uses it
+        - App.js
+            - Imports theme from assets/theme
+            - Everything returned is surrounded with:
+                - <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
+        - assets/theme
+            - Directory with several things
+            - index.js
+                - Uses create theme to do it
+    - Looking at how APDS / Applications / Inventory Website does it
+        - components/site-theme.js
+            - Uses "createTheme" from material to do it
+            - Exports a theme
+        - pages/app.js
+            - Imports ThemeProvider from material
+            - Imports theme from /components/site_theme
+            - Wraps everything in a theme provider

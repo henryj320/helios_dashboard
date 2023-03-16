@@ -46,6 +46,7 @@ export default function Rpi_health() {
                 setData(response.data.data)
 
 
+
                 // Sets progress bar for CPU % usage.
                 var progressCpuDiv = document.getElementById("cpuProgressBar");
                 // Sets the upper bound of the bar.
@@ -106,9 +107,10 @@ export default function Rpi_health() {
                 }
                 
 
-                
             }
-            
+        }).catch(function (error) {
+            // Entered if the API GET call fails.
+            alert("\nAPI call failed with error: \n" + error.code)
         })
 
 
@@ -135,8 +137,7 @@ export default function Rpi_health() {
     return (
 
         <>
-            <table id="rpiHealthTable" onLoad={() => getResponse()} sx={{
-            }}>
+            <table id="rpiHealthTable" onLoad={() => getResponse()}>
                 <tbody>
                     <tr>
                         <td class="rpiHealthTableImg"><img src={health_cpu} alt="Logo"/></td>

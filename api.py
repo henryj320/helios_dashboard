@@ -1,3 +1,5 @@
+"""API called in React Dashboard for Rpi_Health and Muscle_Checker."""
+
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
@@ -21,16 +23,14 @@ class Muscle_checker(Resource):
     """
 
     def get(self):
-        """GETs the JSON response from muscle_checker."""
-
+        """GET the JSON response from muscle_checker."""
         # Runs muscle_checker and sets data to the output JSON.
         data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')
 
         return {'data': data}, 200  # 200 OK code.
 
-
     def put(self):
-        """Updates insert_calendar_text.txt ready to be used."""
+        """Update insert_calendar_text.txt ready to be used."""
         parser = reqparse.RequestParser()  # reqparse is used to parse arguments.
 
         parser.add_argument('text', required=True)  # text argument contains the text to add to insert_calendar_text.
@@ -60,19 +60,17 @@ class Rpi_health(Resource):
     """
 
     def get(self):
-        """GETs the latest health metrics only. No records.json update."""
-
+        """GET the latest health metrics only. No records.json update."""
         data = rh.get_health()  # Collects the latest health metrics and then returns all entries in records.json.
 
         return {'data': data}, 200  # 200 OK code.
-    
 
     def post(self):
-        """POSTs the latest health metrics and then returns all entries in records.json."""
-
+        """POST the latest health metrics and then returns all entries in records.json."""
         data = rh.run()  # Collects the latest health metrics and then returns all entries in records.json.
 
         return {'data': data}, 200  # 200 OK code.
+
 
 api.add_resource(Rpi_health, '/rpi_health')
 
