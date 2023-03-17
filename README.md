@@ -1,5 +1,5 @@
  # react_dashboard
-Last update: 2023-02-27 23:59
+Last update: 2023-03-17 10:08
 <br><br>
 
 ## react_dashboard
@@ -8,7 +8,9 @@ Last update: 2023-02-27 23:59
 
 **Date Started**: 2023-01-08
 
-**Date Completed**: 2023-02-28 (51 days)
+**Date Completed (Sprint 1)**: 2023-02-28 (51 days)
+
+**Date Completed (Sprint 2)**: 2023-02-16 (16 days)
 
 **Language**: React
 
