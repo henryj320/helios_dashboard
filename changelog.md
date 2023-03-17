@@ -516,3 +516,40 @@ SyntaxError: Unexpected token (53:40)
 63. Code cleanup
     - Known issues: dark mode onHover needs to be changed
     - Alerts are disabled because they do not work on muscle checker
+64. Running the updated version on Rpi
+    - Running the website
+        - ` npm install node --reinstall-packages-from=node `
+            - Taking a little while.
+        - ` npm start `.
+    - Running the API
+        - Alt + F2
+        - Activating the VE.
+            - Inside of /Git_repos/reat_dashboard
+            - ` python3 -m venv venv `
+            - ` cd react_dashboard_app `
+            - ` . ../venv/bin/activate `
+        - ` pip install -r requirements.txt `
+        - ` pip install psutil `
+            - Could not build wheels for psutil, which is required to install pyproject.yoml-based projects
+            - ` python -m pip install psutil `
+                - Same error
+            - ` su root `
+            - ` sudo apt install psutil `
+            - ` pip3 install psutil `
+                - Same errors
+            - ` sudo apt-get update `
+            - ` sudo apt update `
+            - ` sudo apt upgrade `
+            - Is it because the python versions are different?
+                - Python 3.9 on laptop and 3.10 on Rpi
+            - ` pip install psutil==5.9.4 --no-cache-dir`
+                - Same version as on laptop
+            - Following this: https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
+                - ` sudo apt-get install gcc python3-dev `
+                - ` pip install --no-binary :all: psutil `
+                    - That worked!
+        - Updating Rpi_health.js and Muscle_checker.js with the right IP.
+            - ` npm start `
+        - ` python ../api.py `.
+
+- TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?
