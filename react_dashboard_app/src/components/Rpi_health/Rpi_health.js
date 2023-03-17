@@ -10,10 +10,7 @@ import health_memory_percentage from '../../assets/images/rpi_health/health_memo
 import health_memory from '../../assets/images/rpi_health/health_memory.png'
 import health_uptime from '../../assets/images/rpi_health/health_uptime.png'
 
-
 export default function Rpi_health() {
-
-    var uptime = "";
 
     useEffect(
         () => {
@@ -45,8 +42,6 @@ export default function Rpi_health() {
             if (response.status == 200) {
                 setData(response.data.data)
 
-
-
                 // Sets progress bar for CPU % usage.
                 var progressCpuDiv = document.getElementById("cpuProgressBar");
                 // Sets the upper bound of the bar.
@@ -60,11 +55,8 @@ export default function Rpi_health() {
                 } else if (parseFloat(response.data.data["cpu_percent"]) > 33) {
                     progressCpuDiv.style = "background: linear-gradient(65deg, rgba(222, 196, 24,1)" + response.data.data["cpu_percent"] + "%, white " + progressCpuTop + "%)";
                 } else {
-                    // progressCpuDiv.style = "background: linear-gradient(65deg, rgba(255, 0, 0, 1)" + response.data.data["cpu_percent"] + "%, white " + progressCpuTop + "%)";
-                    // progressCpuDiv.style = "background: linear-gradient(65deg, rgba(255, 157, 0,1)" + response.data.data["cpu_percent"] + "%, white " + progressCpuTop + "%)";
                     progressCpuDiv.style = "background: linear-gradient(65deg, rgba(77, 173, 21,1)" + response.data.data["cpu_percent"] + "%, white " + progressCpuTop + "%)";
                 }
-
 
                 // Sets progress bar for Memory % usage.
                 var progressMemoryDiv = document.getElementById("memoryProgressBar");
@@ -82,8 +74,7 @@ export default function Rpi_health() {
                     progressMemoryDiv.style = "background: linear-gradient(65deg, rgba(77, 173, 21,1)" + response.data.data["memory_percent"] + "%, white " + progressMemoryTop + "%)";
                 }
 
-
-                // Sets progress bar for Memory % usage.
+                // Sets progress bar for temperature.
                 var progressTempDiv = document.getElementById("tempProgressBar");
                 // Adjusts it so that 20 degrees is 0% filled bar
                 var adjustedTemp = parseFloat(response.data.data["temp"])
@@ -106,36 +97,16 @@ export default function Rpi_health() {
                     progressTempDiv.style = "background: linear-gradient(65deg, rgba(77, 173, 21,1)" + adjustedTemp + "%, white " + progressTempTop + "%)";
                 }
                 
-
             }
         }).catch(function (error) {
             // Entered if the API GET call fails.
             // alert("\nAPI call failed with error: \n" + error.code)
         })
 
-
         console.log(apiData);
-
-
-
-
-
-
     }
 
-    let t = '46%'
-
-    let test = {
-        background: 'linear-gradient(45deg, rgba(255,0,0,1) ' + t + ', rgba(255,255,255,1) 38%)'
-
-        , width: '90%',
-        border: '1px solid black',
-        height: '10px',
-        borderRadius: '50px',
-    };
-
     return (
-
         <>
             <table id="rpiHealthTable" onLoad={() => getResponse()}>
                 <tbody>

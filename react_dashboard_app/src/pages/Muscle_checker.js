@@ -16,21 +16,17 @@ import { themeDark } from '../assets/theme/site-theme-dark';
 
 var theme = themeLight;
 
-
 const Item = Paper;
 
 const ItemProperties = {
     borderRadius: 2,
     border: '1px solid lightgrey',
-
     boxShadow: 5,
     minHeight: {sm: '30px', md: '80px', lg: '80px'},
-
     paddingTop: '2vw',
     paddingBottom: '2vw',
     paddingLeft: '1.3vw',
     paddingRight: '1.3vw',
-
     fontSize: {sm: 0, md: 13, lg: 14, xl: 14},
 
     textarea: {
@@ -44,7 +40,6 @@ const ItemProperties = {
     },
 
     background: theme.palette.background.primary
-
 }
 
 // Receives the URL arguments.
@@ -65,7 +60,6 @@ export const Muscle_checker = () => {
     // Runs getResponse() once when the page loads.
     useEffect(
         () => {
-
             document.title = 'Muscle Checker';
 
             // Only GETs the response if the page is the Results Page.
@@ -151,15 +145,11 @@ export const Muscle_checker = () => {
                         <Grid item xs={12}>
                             <Item sx={{
                                 boxShadow: 5,
-
                                 borderRadius: 2,
                                 border: '1px solid lightgrey',
-
                                 paddingLeft: '1.3vw',
                                 paddingRight: '1.3vw',
-
                                 fontSize: 18,
-
                                 background: theme.palette.background.primary
                             }}>
                                 <h1>Muscle Checker</h1>
@@ -172,10 +162,8 @@ export const Muscle_checker = () => {
                     <Grid id="initialDiv" container spacing={4} sx={{
                         marginLeft: '2vw',
                         marginRight: '0%',
-
                         maxWidth: '100%',
                         gap: 2,
-
                     }}>
                         <Grid item xs={12}>
                             <Item sx={ItemProperties}>
@@ -193,7 +181,6 @@ export const Muscle_checker = () => {
                     <Grid id="resultsDiv" container spacing={4} sx={{
                         marginLeft: '2vw',
                         marginRight: '0%',
-
                         maxWidth: '100%',
                         gap: 2,
                     }}>
@@ -201,7 +188,6 @@ export const Muscle_checker = () => {
                             <Item sx={{
                                 padding: '2.5%',
                                 paddingLeft: '5%',
-
                                 minHeight: '10vh',
                                 maxHeight: '10vh',
 
@@ -234,7 +220,6 @@ export const Muscle_checker = () => {
                             <Item sx={{
                                 padding: '2.5%',
                                 paddingLeft: '5%',
-
                                 minHeight: '10vh',
                                 maxHeight: '10vh',
 
@@ -271,7 +256,6 @@ export const Muscle_checker = () => {
                         <Grid item xs={12}>
                             <Item sx={{
                                 padding: '2.5%',
-
                                 background: theme.palette.background.primary
                             }}>
                                 <p>{apiData.suggestions[0]}</p>
@@ -289,12 +273,9 @@ export const Muscle_checker = () => {
                         <Grid item xs={12} md={2}>
                             <Item sx={{
                                 padding: '2.5%',
-
                                 textAlign: 'center',
                                 fontSize: 'large',
-
                                 background: theme.palette.background.buttons,
-                                
                                 marginBottom: {xs: '5vh', sm: '5vh', md: 0},
 
                             }}>

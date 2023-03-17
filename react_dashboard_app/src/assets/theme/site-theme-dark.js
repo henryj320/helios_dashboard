@@ -12,7 +12,6 @@ export const themeDark = createTheme({
             buttons: '#404040',
             textarea: 'grey'
         }
-        
     },
     text: {
         fontFamily: 'system-ui'

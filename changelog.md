@@ -513,3 +513,6 @@ SyntaxError: Unexpected token (53:40)
     - Hard to figure out auto changing
         - Figured it out for main page, but not sure how to make it update Sidebar
         - Leaving it for now
+63. Code cleanup
+    - Known issues: dark mode onHover needs to be changed
+    - Alerts are disabled because they do not work on muscle checker

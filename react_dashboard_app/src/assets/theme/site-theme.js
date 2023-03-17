@@ -12,7 +12,6 @@ export const themeLight = createTheme({
             buttons: 'lightgrey',
             textarea: '#f0f0f0'
         }
-        
     },
     text: {
         fontFamily: 'system-ui'

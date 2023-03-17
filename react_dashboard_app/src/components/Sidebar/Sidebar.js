@@ -5,10 +5,7 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
-
 import { Link } from 'react-router-dom'
-
-
 
 import { ThemeProvider } from '@mui/material/styles';
 import { themeLight } from '../../assets/theme/site-theme';
@@ -28,18 +25,13 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Sidebar(props) {
 
     // var parentTheme = props.theme;
-    
     // const [theme, setTheme] = useState(props.theme)
-    
     // useEffect(
     //     () => {
     //         setTheme(props.theme);
     //     }, []  // Runs repeatedly without "[]"
     // )
-
     // console.log(theme)
-
-    
 
     return (
         <div id="sidebarDiv">
@@ -49,20 +41,14 @@ export default function Sidebar(props) {
                 span: {
                     borderRadius: 2,
                     border: 'none',
-
                     padding: '1.5vw',
                     display: 'block',
-                    
                     boxShadow: 3,
-
                     background: theme.img.background,
-                    
                     marginTop: '2.5vh',
                     marginLeft: '6%',
                     marginRight: '6%',
-
                     fontSize: '1vw',
-
                     color: theme.palette.text.secondary,
                 },
             }}>
