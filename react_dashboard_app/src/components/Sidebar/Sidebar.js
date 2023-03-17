@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from "react";
 
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -10,7 +11,10 @@ import { Link } from 'react-router-dom'
 
 
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '../../assets/theme/site-theme'
+import { themeLight } from '../../assets/theme/site-theme';
+import { themeDark } from '../../assets/theme/site-theme-dark';
+
+var theme = themeLight;
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -21,7 +25,22 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
-export default function Sidebar() {
+export default function Sidebar(props) {
+
+    // var parentTheme = props.theme;
+    
+    // const [theme, setTheme] = useState(props.theme)
+    
+    // useEffect(
+    //     () => {
+    //         setTheme(props.theme);
+    //     }, []  // Runs repeatedly without "[]"
+    // )
+
+    // console.log(theme)
+
+    
+
     return (
         <div id="sidebarDiv">
             <Grid container spacing={0} sx={{

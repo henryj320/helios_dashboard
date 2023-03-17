@@ -11,7 +11,10 @@ import Grid from '@mui/material/Grid';
 import Sidebar from '../components/Sidebar/Sidebar';
 
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '../assets/theme/site-theme'
+import { themeLight } from '../assets/theme/site-theme';
+import { themeDark } from '../assets/theme/site-theme-dark';
+
+var theme = themeLight;
 
 
 const Item = Paper;

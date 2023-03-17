@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const theme = createTheme({
+export const themeLight = createTheme({
     palette: {
         text: {
             primary: '#666666',
@@ -19,5 +19,10 @@ export const theme = createTheme({
     },
     img: {
         background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)'
-    }
+    },
+    rpi: {
+        background: 'none',
+        border: 'none'
+    },
+    border: '1px solid lightgrey'
 });

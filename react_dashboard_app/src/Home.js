@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useEffect } from "react";
+
 import { Link } from 'react-router-dom'
 
 import { styled } from '@mui/material/styles';
@@ -17,61 +19,92 @@ import Rpi_health from './components/Rpi_health/Rpi_health';
 import Sidebar from './components/Sidebar/Sidebar';
 
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './assets/theme/site-theme'
+import { themeLight } from './assets/theme/site-theme';
+import { themeDark } from './assets/theme/site-theme-dark';
+
+var theme = themeLight;
 
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
-const newItemProperties = {
 
-    background: theme.palette.background.primary,
 
-    marginTop: '0.5vw',
-
-    paddingLeft: '1.3vw',
-    paddingRight: '1.3vw',
-    
-    boxShadow: 5,
-
-    borderRadius: 2,
-    border: '1px solid lightgrey',
-
-    fontSize: '1vw',
-
-    color: theme.palette.text.primary,
-
-    img: {
-        boxShadow: 2,
-
-        width: '6vw',
-
-        border: '1px solid #1B1F23',
-        borderRadius: '12px',
-
-        background: theme.img.background,
-    },
-
-    table: {
-        width: '100%'
-    }
-}
 
 
 export const Home = () => {
 
+    // useEffect(
+    //     () => {
+    //         setTheme(themeLight);
+    //     }, []  // Runs repeatedly without "[]"
+    // )
+
     document.title = 'React Dashboard';
+
+    // const [theme, setTheme] = useState(themeLight)
+
+    // function setDark() {
+    //     console.log("Entered")
+    //     // theme = themeDark;
+    //     setTheme(themeDark)
+    // }
+
+
+
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      }));
+    
+    const newItemProperties = {
+    
+        background: theme.palette.background.primary,
+    
+        marginTop: '0.5vw',
+    
+        paddingLeft: '1.3vw',
+        paddingRight: '1.3vw',
+        
+        boxShadow: 5,
+    
+        borderRadius: 2,
+        border: theme.background,
+    
+        fontSize: '1vw',
+    
+        color: theme.palette.text.primary,
+    
+        img: {
+            boxShadow: 2,
+    
+            width: '6vw',
+    
+            border: '1px solid #1B1F23',
+            borderRadius: '12px',
+    
+            background: theme.img.background,
+        },
+    
+        table: {
+            width: '100%'
+        }
+    }
+
+
+
+
+
+
+
 
     return (
         <ThemeProvider theme={theme}>
         <div className="float-container">
 
-            <Sidebar></Sidebar>
+            <Sidebar theme={themeLight}></Sidebar>
 
             <div id="mainDiv">
                 <Grid container spacing={4} sx={{
@@ -179,9 +212,9 @@ export const Home = () => {
 
                                 img: {
                                     width: '100%',
-                                    // border: '1px solid black',
-                                    // borderRadius: '12px',
-                                    // background: 'linear-gradient(to right bottom, #48A2F1, #1B74E8)',
+                                    border: theme.rpi.border,
+                                    borderRadius: '12px',
+                                    background: theme.rpi.background,
 
                                 },
 
@@ -197,7 +230,7 @@ export const Home = () => {
                                 <tbody>
                                     <tr>
                                         <td id="rpiTitleImgTD">
-                                            <img src={health_logo} alt="Logo"/>
+                                            <img style={{border: 'none', background: 'none'}} src={health_logo} alt="Logo"/>
                                         </td>
                                         <td id="rpiTitleHeaderTD">
                                             <h2>Server Health</h2>

@@ -509,3 +509,7 @@ SyntaxError: Unexpected token (53:40)
         - Maybe a usestate 
             - Could update the theme on button press
 62. Creating another theme
+    - Dark with red accent
+    - Hard to figure out auto changing
+        - Figured it out for main page, but not sure how to make it update Sidebar
+        - Leaving it for now
