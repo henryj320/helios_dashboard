@@ -4,6 +4,8 @@ Last update: 2023-02-27 23:58
 
 ## Changelog for react_dashboard
 
+### Sprint 1
+
 1. Created the project and README.
 
 Following the tutorial [here](https://reactjs.org/docs/create-a-new-react-app.html):
@@ -442,3 +444,75 @@ SyntaxError: Unexpected token (53:40)
         - API did not have permission
             - ` chown -R webadmin:webadmin react_dashboard `
     - Need to add "," on Muscle Checker page between items.
+
+### Sprint 2
+
+55. Adding rpi_health to api.
+    - ` . venv/bin/activate `.
+    - ` python ../api.py `.
+    - Fixed bug where uptime didn't work properly if days running < 1.
+    - Adding it to api.py
+    - Splitting into GET and POST
+        - GET the current health metrics
+        - POST the current health metrics into *records.json* and then return *records.json*
+    - Tested they work with HTTP Client extension.
+56. Calling rpi_health in React.
+    - Added it to Rpi_health.js
+    - Completely working, except it does say uptime is "1 days"
+57. Making the rpi_health images
+    - Drew them out
+    - Making them on Pinta
+        - Not very good. Switching to paint.net
+    - Switched to Windows
+    - Finished temp and cpu.
+    - Keeps saying something is running on another port
+        - ` fuser -k 4000/tcp `
+58. Adding the layout
+    - Pictures added
+    - API calls made
+    - Progress bars added
+        - Temp
+        - CPU Usage
+        - Memory Usage
+    - Added the title
+59. Adding the other links (strava, youtube, google calendar)
+    - Don't like the look
+        - Removing again
+60. Adding testing
+    - Added an alert if the API call fails
+        - Messes up on muscle_checker
+            - TODO: Fix that
+    - Removed rpi_health if too small
+    - pycodestyle and pydocstyle on api.py
+        - ` pycodestyle ../apy.py `
+        - ` pydocstyle ../apy.py `
+61. Adding a theme
+    - Looking at how the Material Dashboard uses it
+        - App.js
+            - Imports theme from assets/theme
+            - Everything returned is surrounded with:
+                - <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
+        - assets/theme
+            - Directory with several things
+            - index.js
+                - Uses create theme to do it
+    - Looking at how APDS / Applications / Inventory Website does it
+        - components/site-theme.js
+            - Uses "createTheme" from material to do it
+            - Exports a theme
+        - pages/app.js
+            - Imports ThemeProvider from material
+            - Imports theme from /components/site_theme
+            - Wraps everything in a theme provider
+    - Added theming for everything except the body background
+    - How do switch between them?
+        - Maybe a usestate 
+            - Could update the theme on button press
+62. Creating another theme
+    - Dark with red accent
+    - Hard to figure out auto changing
+        - Figured it out for main page, but not sure how to make it update Sidebar
+        - Leaving it for now
+63. Code cleanup
+    - Known issues: dark mode onHover needs to be changed
+    - Alerts are disabled because they do not work on muscle checker

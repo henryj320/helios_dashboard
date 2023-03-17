@@ -1,56 +1,10 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  /* height: 150px; */
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
 .imageTD {
   width: 1vw;
 }
 
-#firstImage {
-  width: 6vw;
-  border: 1px solid grey;
-  border-radius: 12px;
-  background: linear-gradient(to right bottom, #48A2F1, #1B74E8)
-}
-
-.cardHeader {
-  text-align: right;
-  margin-right: 2%;
-  margin-left: 45%;
-  border: 1px solid red
-}
-
 body {
-  background: linear-gradient(to right bottom, lightgrey, #888888);
-  background-repeat: round;
-  /* #F5F5F5 */
   overflow-x: hidden;
-}
-
-html {
-  height: 100%;
+  background: #888888;
 }
 
 * {
@@ -89,15 +43,14 @@ hr {
 
 #mainForm button{
   padding: 1% 2%;
-  color: #444;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 #text_input {
   width: 98%;
   padding: 1%;
-  background: rgb(240, 240, 240);
   border: 1px solid rgb(158, 158, 158);
-  color: #666666;
 }
 
 
@@ -125,4 +78,61 @@ hr {
   transition: 1000ms;
   font-size: 1.2vw;
   transform: rotate(0.01turn);
+}
+
+
+/* #rpiHealthTable img {
+  border: 1px solid green;
+  width: 10%;
+} */
+
+/* #rpiHealthTable td {
+  width: 15%
+} */
+
+.rpiHealthTableImg {
+  padding: 0;
+  margin: 0;
+}
+
+.rpiHealthTableTxt {
+  width: 20%;
+  font-size: 80%;
+  text-align: left;
+  padding-left: 2%;
+  padding-bottom: 1%;
+}
+
+.rpiHealthTableGap {
+  width: 7.5%;
+}
+
+#rpiHealthTable td {
+  border: 0px solid black;
+}
+
+.healthProgressBars {
+  width: 90%;
+  border: 1px solid #424242;
+  height: 10px;
+  border-radius: 50px;
+  background: #1B74E8;
+  margin-top: 3%;
+}
+
+#rpiTitleTable {
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  margin-top: -5%;
+  margin-left: -3%;
+}
+
+#rpiTitleTable img {
+  width: 100%;
+}
+
+
+#rpiTitleHeaderTD {
+  width: 85%;
 }
