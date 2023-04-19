@@ -1,5 +1,5 @@
 # react_dashboard
-Last update: 2023-02-27 23:58
+Last update: 2023-04-20 00:37
 <br><br>
 
 ## Changelog for react_dashboard
@@ -551,5 +551,15 @@ SyntaxError: Unexpected token (53:40)
         - Updating Rpi_health.js and Muscle_checker.js with the right IP.
             - ` npm start `
         - ` python ../api.py `.
+
+### Converting to Docker
+
+65. Learnt how to run the React app and Flask API within their own Docker containers.
+    - Learnt how to do it in /home/henry/Documents/Learning_Docker/react_dashboard_docker.
+    - Pasted the changes into the Repo
+    - Rewrote how to run it on the README.
+    - Wrote documentation on making it in the documentation Git Repo.
+
+
 
 - TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?

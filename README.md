@@ -1,5 +1,5 @@
  # react_dashboard
-Last update: 2023-03-17 10:08
+Last update: 2023-04-20 00:19
 <br><br>
 
 ## react_dashboard
@@ -22,8 +22,18 @@ View the [changelog](changelog.md) here.
 
 ---
 
-### Running the Project
+## Running the Project
 
+### With Docker
+The preferred way to run the React Dashboard is using Docker. This will start up two containers - one for the API and another for the website itself. To run the React Dashboard, simply ` cd ` to the correct directory and then run **` sudo docker compose up -d `**. This will run each of the containers in detached mode (so that they are not attached to a terinal).
+
+Before running the containers, you will need to change the IP within the *docker-compose.yml* file. If you don't, a "cannot assign requested address" error will be raised.
+
+To stop the containers, run **` sudo docker compose down `** in the same directory. This will stop all of the containers and delete them. You can check that they are deleted with ` sudo docker ps -a `
+
+If you want to remove the images generated, run ` sudo docker images ` and then remove the individual images with ` sudo docker rmi <image-id> `.
+
+### Without Docker
 To run the project, follow these steps:
 
 #### Cloning the Repository
