@@ -559,6 +559,10 @@ SyntaxError: Unexpected token (53:40)
     - Pasted the changes into the Repo
     - Rewrote how to run it on the README.
     - Wrote documentation on making it in the documentation Git Repo.
+    - Testing that it works by recloning
+        - Context was wrong
+        - Path was wrong in *api.Dockerfile*.
+        - Failed with a random error, but worked the next time :/
 
 
 

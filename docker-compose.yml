@@ -7,7 +7,7 @@ services:
 
   website:
     build:
-      context: ./src/react_dashboard_app/
+      context: ./react_dashboard_app/
       dockerfile: website.Dockerfile
     ports:
       - "192.168.1.101:3001:3000"

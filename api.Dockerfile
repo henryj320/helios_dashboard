@@ -2,7 +2,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /src
 
-COPY src/requirements.txt requirements.txt
+COPY react_dashboard_app/requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 COPY . .
