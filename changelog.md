@@ -733,6 +733,100 @@ SyntaxError: Unexpected token (53:40)
         - Going to keep it running for now.
         - Done for the night.
     - Removing psutil from the requirements and seeing if it builds.
+        - SSHing in
+        - ` cd /home/webadmin/Git_Repos/react_dashboard `
+        - Removed psutil from requirements.txt
+        - ` docker build -f api.Dockerfile --tag react-dashboard-api-image --network=host . `
+        - Yep, that succeeded
+        - Can I run it?
+            - ` docker run --publish 4000:4000 --name react-dashboard-api react-dashboard-api-image `
+            - Crashed the RPi. Really need this new device. Ill see if it recovers later
+                - Been an hour. It went up briefly but is crashed again.
+        - ` docker restart react-dashboard-website `
+    - Trying to run the version that is in the repo on Work Laptop (Windows)
+        - Git pull
+        - Launched Docker
+        - ` docker prune --all --force `
+        - Updating the IP
+            - ` ipconfig `
+            - Updating the docker-compose.yml
+        - ` docker compose up -d `
+        - Yep that works. Across the network too.
+    - Next step could be to try it on the MS Surface 3?
+        - Seem as that device is almost default when it comes to having anything installed.
+            - If it works, then something is buggered in the RPi 3 Model B (which wouldn't surprise me given how often the SSH crashes and that it is 7 yrs old).
+        - ` sudo apt-get update `
+        - ` sudo apt update `
+        - ` sudo apt upgrade `
+        - ` sudo install -m 0755 -d /etc/apt/keyrings `
+        - ` sudo apt install curl ` - An added step needed
+        - ` curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg `
+        - ` sudo chmod a+r /etc/apt/keyrings/docker.gpg `
+        - ` echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null `
+        - ` sudo apt-get update `
+        - ` sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin `
+        - ` sudo docker run hello-world `
+        - Git cloned the repo
+        - ` cd react_dashboard `
+        - Changing the ip
+            - ` sudo apt install net-tools `
+            - ` ifconfig `
+                - 192.168.1.108
+            - Changing it in the docker-compose.yml
+        - ` sudo docker compose up -d `
+        - Runs! Need to change the API reference
+            - Changed the IP referenced in RPI_health and Muscle_Checker
+            - ` sudo docker compose down `
+            - ` sudo docker system prune --all --force `
+                - So that the images are rebuilt
+            - ` sudo docker compose up -d `
+            - Takes about 7 minutes to run fully
+            - Website runs. Not connecting to the API though
+                - Docker compose doesnt actually expose the ports for the API. maybe thats it. Checking
+                    - Testing that on the main laptop
+                    - Changing the base_urls
+                    - ` sudo docker compose up -d `
+                        - Took about 4 minutes
+                    - ` sudo docker compose down `
+                    - ` sudo docker system prune --all --force `
+                    - Adding "port" to the docker-compose.yml
+                        - Failed. Trying by hosting across the network (full ip:port instead of just port)
+                        - Nope. Still not able to access it
+                    - Running each of the containers separately
+                        - ` sudo docker build -f api.Dockerfile --tag react-dashboard-image . `
+                        - ` sudo docker run --publish 4000:4000 --name react-dashboard-api react-dashboard-image `
+                            - Cant open 'src/api.py' No such file or directory
+                        - Changed from 'src/api.py' to 'api.py'
+                        - ` sudo docker build -f api.Dockerfile --tag react-dashboard-api-image . `
+                        - ` sudo docker run --publish 4000:4000 --name react-dashboard-api react-dashboard-api-image `
+                        - That worked!
+                    - Running ` sudo docker compose up -d ` again.
+                        - That all works! API and website.
+                        - Making that 'src/api.py' change on the MS Surface 3
+        - That means that something went wrong on the RPi. The MS Surface 3 doesnt even have Python packages like psutil installed
+            - The best bet is probably to lock the package versions in *requirements.txt* and then leave it the same.
+69. Looking into DietPi
+    - Lightweight. Could improve the RPi speeds
+    - Running on Gnome Boxes
+        - Downloaded [here](https://dietpi.com/#downloadinfo) for "Native PC for BIOS/CSM"
+        - Run it (10GB storage and 2GB RAM)
+    - Easy to install software in the DietPi Software centre
+        - ` dietpi-software `
+    - A cool dashboard to see system:
+        - http://<your.IP>:5252
+    - Desktop looks good
+        - Lots of options. Im using Xfce
+    - Customising the Desktop
+        - xfce-look.org
+            - Downloading Orchis gtk theme
+            - ` apt install xz-utils `
+            - ` tar -xf Orchis.tar.xz `
+        - Nevermind, just need to add the .tar.xz file
+            - Setings -> Appearance -> Style -> +Add
+        - Adding Tela icons
+            - Same process
+        - Changing the background
+        - Looks really clean!
 
 
 - TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?
