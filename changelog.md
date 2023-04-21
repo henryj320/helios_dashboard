@@ -814,6 +814,38 @@ SyntaxError: Unexpected token (53:40)
                 - ` pip list `
                 - Updated requirements.txt with versions
         - Set the container names in the *docker-compose.yml* file.
+    - Pushing those changes to the repo
+        - Just the ones thats actually needed
+    - RPi still fails
+    - Trying it on DietPi in a VM
+        - Copying the files over. Cant be bothered to set up SSH keys
+        - Installing docker through docs.docker.com/engine/install/debian
+        - ` docker compose up -d `
+        - Changing the IP
+            - ` sudo apt install net-tools `
+            - ` ifconfig `
+                - 10.0.2.15
+            - Dont have a text editor
+                - ` sudo apt-get install gedit `
+            - Editing the *docker-compose.yml*
+        - ` docker compose up -d `
+            - Leaving the base_url for now
+            - It runs!
+            - Changing the base_url
+            - Website works, something wrong with the API
+        - Running the API only
+            - Link is slightly wrong in *api.py*
+                - data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')
+            - Needs to be:
+                - data = mc.run('react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt')
+            - Also
+                - json_file_to_dict('react_dashboard_app/scripts/muscle_checker/all_muscles.json')
+                    - Inside *muscle_checker_script.py*
+            - That fixed it
+        - Running the whole thing
+            - Nope. Same issue
+            - Its actually in lots of places withint muscle_checker_script.py
+            - That works. Pushing the fixes.
 69. Looking into DietPi
     - Lightweight. Could improve the RPi speeds
     - Running on Gnome Boxes

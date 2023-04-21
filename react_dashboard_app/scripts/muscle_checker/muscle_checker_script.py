@@ -209,7 +209,7 @@ def run(file: str) -> dict:
     Returns:
         dict: results_dict containing all of the details of the results.
     """
-    all_muscles = json_file_to_dict('./scripts/muscle_checker/all_muscles.json')
+    all_muscles = json_file_to_dict('react_dashboard_app/scripts/muscle_checker/all_muscles.json')
     all_groups = all_muscles["groups"]  # Contains name:[muscles] pairs.
     all_muscles = all_muscles["muscles"]  # Contains name:[exercises] pairs.
 
@@ -252,16 +252,16 @@ def run_string(string: str):
     Args:
         string (str): The calendar text to get the results from.
     """
-    f = open("./scripts/muscle_checker/insert_calendar_text.txt", "w")  # Opens the file to be overwritten ("w").
+    f = open("react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt", "w")  # Opens the file to be overwritten ("w").
     f.write(string + "\n")
     f.close()
 
-    return run("./scripts/muscle_checker/insert_calendar_text.txt")
+    return run("react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt")
 
 
 def update_txt_file(string: str) -> bool:
 
-    f = open("./scripts/muscle_checker/insert_calendar_text.txt", "w")
+    f = open("react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt", "w")
     f.write(string + "\n")
     f.close()
 
@@ -274,7 +274,7 @@ if __name__ == "__main__":  # Default method to run.
 
     parser = argparse.ArgumentParser(description="A python script to state which muscles have been missed given calendar text.")  # Allows parsing arguments to the file.
     # parser.add_argument("-f", "--set_calendar_file", help="Sets the location of insert_calendar_text.txt.", default="insert_calendar_text.txt", type=str)
-    parser.add_argument("-f", "--file", help="Sets the location of insert_calendar_text.txt.", default="./scripts/muscle_checker/insert_calendar_text.txt", type=str)
+    parser.add_argument("-f", "--file", help="Sets the location of insert_calendar_text.txt.", default="react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt", type=str)
     args = parser.parse_args()
 
     print(run(args.file))

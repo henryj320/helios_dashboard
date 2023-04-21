@@ -25,7 +25,8 @@ class Muscle_checker(Resource):
     def get(self):
         """GET the JSON response from muscle_checker."""
         # Runs muscle_checker and sets data to the output JSON.
-        data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')
+        # data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')
+        data = mc.run('react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt')
 
         return {'data': data}, 200  # 200 OK code.
 
