@@ -802,9 +802,18 @@ SyntaxError: Unexpected token (53:40)
                         - That worked!
                     - Running ` sudo docker compose up -d ` again.
                         - That all works! API and website.
-                        - Making that 'src/api.py' change on the MS Surface 3
+                        - Making that 'src/api.py' change on the MS Surface 3.
+                            - Also the exposing the port in *docker-compose.yml*.
+                        - ` sudo docker system prune --all --force `
+                        - ` sudo docker compose up -d `
+                        - That worked perfectly!
         - That means that something went wrong on the RPi. The MS Surface 3 doesnt even have Python packages like psutil installed
             - The best bet is probably to lock the package versions in *requirements.txt* and then leave it the same.
+            - Connecting to the react_dashboard-api-1 container on the laptop
+                - ` sudo docker exec -it react_dashboard-api-1 sh `
+                - ` pip list `
+                - Updated requirements.txt with versions
+        - Set the container names in the *docker-compose.yml* file.
 69. Looking into DietPi
     - Lightweight. Could improve the RPi speeds
     - Running on Gnome Boxes
