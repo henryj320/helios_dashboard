@@ -563,7 +563,279 @@ SyntaxError: Unexpected token (53:40)
         - Context was wrong
         - Path was wrong in *api.Dockerfile*.
         - Failed with a random error, but worked the next time :/
-
+    - All working now!
+66. Checking whether the Raspberry Pi could hold Docker space-wise
+    - SSHing into the Raspberry Pi.
+    - ` df -H `
+    - Shows that 5GB out of 16GB is used.
+    - Plenty of space
+67. Trying to install Docker on the Raspberry Pi
+    - SSH connection crashed
+        - React Dashboard down
+        - Checking the Raspberry Pi
+            - Not crashed
+            - API:
+                - INFO: task kworker/0:4:91092 blocked for more than 241 seconds.
+                - Tainted: G  C  5.15.92-bcm2711  #23.02.02
+            - Website:
+                - Seems to be working fine
+    - Restarting the Rpi (unplugging and replugging)
+    - Checking the version of Armbian
+        - ` cat /etc/os-release `
+        - Armbian 23.02.02 Jammy
+    - ` sudo apt-get update `
+    - ` sudo apt update && sudo apt upgrade `
+    - I think we're likely to have an issue given that the RPi only has 0.8GB RAM
+        - Could get something like a NanoPi if it would work
+            - [Link](https://www.friendlyelec.com/index.php?route=product/product&path=69&product_id=291)
+            - Armbian is supported
+                - [Link](https://www.armbian.com/nanopi-r6s/)
+            - Specs
+                - NanoPi R6S vs Raspberry Pi 3 Model B V1.2
+                - 8GB RAM vs 1GB RAM
+                - Quad-core ARM Cortex-A76(up to 2.4GHz) and quad-core Cortex-A55 CPU (up to 1.8GHz) vs 1.2GHz
+                - 32GB vs 16GB
+                - USB-C vs MicroUSB for power
+            - The NanoPi R6C looks really good!
+            - But it is out of stock and would take 2 months to arrive.
+            - The NanoPi R2C is not in stock. The NanoPi R2S is
+                - They seem identical except the R2S has more ports and costs $20 more.
+            - Does it have built-in Wifi?
+                - Nope, no wifi!
+            - Looks like the GPU is the big selling point
+    - ` sudo apt-get install ca-certificates curl gnupg `
+    - ` sudo install -m 0755 -d /etc/apt/keyrings `
+    - ` curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg `
+    - ` echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null `
+    - ` sudo apt-get update `
+        - Error: https://download.docker.com/linux/debian jammy release
+            - 404 Not Found
+            - Theres no download option for Jammy
+    - ` sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin `
+    - Following the ubuntu one instead
+        - https://docs.docker.com/engine/install/ubuntu
+    - Docker is installed!
+    - ` sudo docker run hello-world `
+        - That worked!
+68. Running Docker version of React Dashboard on the RPi
+    - SSHing in
+    - ` su webadmin `
+    - ` cd /home/webadmin/Git_Repos `
+    - ` rm -rf react_dashboard `
+    - Git cloning it back
+    - ` cd react_dashboard `
+    - Changing the IP in docker-compose.yml
+    - ` sudo docker compose up -d `
+        - "Webadmin is not in sudoers file. This incident will be reported"
+        - Switching to root for now
+    - ` docker system prune --all --force `
+    - ` docker compose up -d `
+        - buildx: failed to read current commit information with git rev-parse --is-inside-work-tree
+            - failed to solve: process "/bin/sh -c pip3 install -r requirements.txt" did not complete successfully: exit code: 1
+    - Manually did ` pip install -r requirements.txt `.
+        - Nope, still failed
+    - Trying to run the containers individually
+        - ` docker build -f api.Dockerfile --tag react-dashboard-api-image . `
+            -  => => # WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object
+            -  => => # ERROR: No matching distribution found for flask
+        - OH, IS THE FILEPATH WRONG NOW?
+    - Trying to run it locally
+        - ` sudo docker system prune --all --force `
+        - ` sudo docker compose up -d `
+            - That worked fine.
+    - Capitalising "flask" to "Flask" in *requirements.txt*.
+        - Nope
+    - Trying to add ` pip3 install --upgrade pip ` to the api.Dockerfile.
+        - Prune and rerunning
+        - Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple pip/                                                                     
+    - Adding ` RUN apt-get install -y flask ` to the api.Dockerfile
+    - Both Laptop and RPi are on the same version of Docker
+    - Tried ` docker build -f api.Dockerfile --tag react-dashboard-api-image --network=host . `
+        - That seems to work! Except for psutil
+        - Could not build wheels for psutil
+            - Previous solution:
+                - ` sudo apt-get install gcc python3-dev `
+                - ` pip install --no-binary :all: psutil `
+        - Adding that
+        - Trying again
+            - Unable to locate gcc python3-dev
+            - ` apt-get install gcc python3-dev `
+            - ` sudo apt-get update `
+            - ` sudo apt-get upgrade `
+            - Both on the RPi and inside the Dockerfile
+        - Running it again (prune first)
+            - ` docker build -f api.Dockerfile --tag react-dashboard-api-image --network=host . `
+            - Taking absolutely ages
+                - Crashed after 25 minutes...
+    - Must be something that is not installed on RPi
+        - because it works fine on the laptop
+        - ` apt-get install gcc `
+        - ` apt-get install python3-dev `
+        - ` pip install -no-binary :all: psutil `
+        - ` apt-get update `
+        - ` apt-get upgrade `
+        - Still gave the same error (ERROR: Could not build wheels for psutil, which is required to install pyproject.toml-based projects)
+        - How about ` pip install wheel ` (both system and in Dockerfile)
+            - Same issue
+        - Setting a specific version of psutil (5.9.3)
+            - Same issue
+        - Trying to install everything that the user has downloaded
+            - ` pip freeze > temp.txt `
+                - Pasting that into requirements.txt
+                - Removed all the Conda ones (the ones with @)
+            - ` pip install -r requirements.txt `
+                - Not going to work without manually installing them
+        - Checking what was done in rpi_health
+            - Nothing useful. Whatever it was that I need was done differently
+        - ` sudo pip install --upgrade --force-reinstall psutil `
+            - Installed 5.9.5
+            - Prune
+            - Retrying
+                - That seems to have worked!
+                - Failed at the installing "json" stage
+                    - Just going to remove that again, not needed anyway
+                - Nevermind, it still failed
+        - Trying a reboot
+            - Nope. Made no difference
+    - Following the readme steps
+        - ` cd react_dashboard_app `
+        - ` npm install `
+        - ` docker system prune --all --force `
+        - ` docker build -f api.Dockerfile --tag react-dashboard-api-image --network=host . `
+            - No fucking way. That worked.
+            - Lol nope. I did that on my laptop, not the RPi
+            - Trying it on the RPi
+                - ` cd react_dashboard_app `
+                - ` npm install `
+        - Trying again
+            - Git clone
+            - ` sudo chown webadmin react_dashboard_app `
+            - ` su webadmin `
+            - ` npm install node --reinstall-packages-from=node `
+                - Taking a while
+                - Okay. Taking more than a while.
+                - Failed. Didnt work
+    - Is it worth making a VM that contains Armbian and an exact duplicate of the RPi system?
+    - Reconnecting to SSH instead of straight on the deivce
+    - ` docker compose up -d `
+        - ERROR in RUN npm install
+    - Trying to see where it went wrong.
+        - ` docker build --no-cache -f website.Dockerfile --tag react-dashboard-website-image . `  
+        - npm ERR! request to https://registry.npmjs.org/axios failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org
+        - ` docker build --no-cache -f website.Dockerfile --tag react-dashboard-website-image --network=host . `
+        - That worked!
+        - 1 out of 2 images made!
+    - ` docker build -f api.Dockerfile --tag react-dashboard-api-image --network=host . `
+        - ERROR: Could not build wheels for psutil, which is required to install pyproject.toml-based projects
+    - Trying to run the website
+        - ` docker run -it -p 192.168.1.101:3000:3000 --name react-dashboard-website -e CHOKIDAR_POLLING=true --rm react-dashboard-website-image `
+        - That works. So the frontend works, just need to get the backend working.
+        - Going to keep it running for now.
+        - Done for the night.
+    - Removing psutil from the requirements and seeing if it builds.
+        - SSHing in
+        - ` cd /home/webadmin/Git_Repos/react_dashboard `
+        - Removed psutil from requirements.txt
+        - ` docker build -f api.Dockerfile --tag react-dashboard-api-image --network=host . `
+        - Yep, that succeeded
+        - Can I run it?
+            - ` docker run --publish 4000:4000 --name react-dashboard-api react-dashboard-api-image `
+            - Crashed the RPi. Really need this new device. Ill see if it recovers later
+                - Been an hour. It went up briefly but is crashed again.
+        - ` docker restart react-dashboard-website `
+    - Trying to run the version that is in the repo on Work Laptop (Windows)
+        - Git pull
+        - Launched Docker
+        - ` docker prune --all --force `
+        - Updating the IP
+            - ` ipconfig `
+            - Updating the docker-compose.yml
+        - ` docker compose up -d `
+        - Yep that works. Across the network too.
+    - Next step could be to try it on the MS Surface 3?
+        - Seem as that device is almost default when it comes to having anything installed.
+            - If it works, then something is buggered in the RPi 3 Model B (which wouldn't surprise me given how often the SSH crashes and that it is 7 yrs old).
+        - ` sudo apt-get update `
+        - ` sudo apt update `
+        - ` sudo apt upgrade `
+        - ` sudo install -m 0755 -d /etc/apt/keyrings `
+        - ` sudo apt install curl ` - An added step needed
+        - ` curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg `
+        - ` sudo chmod a+r /etc/apt/keyrings/docker.gpg `
+        - ` echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null `
+        - ` sudo apt-get update `
+        - ` sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin `
+        - ` sudo docker run hello-world `
+        - Git cloned the repo
+        - ` cd react_dashboard `
+        - Changing the ip
+            - ` sudo apt install net-tools `
+            - ` ifconfig `
+                - 192.168.1.108
+            - Changing it in the docker-compose.yml
+        - ` sudo docker compose up -d `
+        - Runs! Need to change the API reference
+            - Changed the IP referenced in RPI_health and Muscle_Checker
+            - ` sudo docker compose down `
+            - ` sudo docker system prune --all --force `
+                - So that the images are rebuilt
+            - ` sudo docker compose up -d `
+            - Takes about 7 minutes to run fully
+            - Website runs. Not connecting to the API though
+                - Docker compose doesnt actually expose the ports for the API. maybe thats it. Checking
+                    - Testing that on the main laptop
+                    - Changing the base_urls
+                    - ` sudo docker compose up -d `
+                        - Took about 4 minutes
+                    - ` sudo docker compose down `
+                    - ` sudo docker system prune --all --force `
+                    - Adding "port" to the docker-compose.yml
+                        - Failed. Trying by hosting across the network (full ip:port instead of just port)
+                        - Nope. Still not able to access it
+                    - Running each of the containers separately
+                        - ` sudo docker build -f api.Dockerfile --tag react-dashboard-image . `
+                        - ` sudo docker run --publish 4000:4000 --name react-dashboard-api react-dashboard-image `
+                            - Cant open 'src/api.py' No such file or directory
+                        - Changed from 'src/api.py' to 'api.py'
+                        - ` sudo docker build -f api.Dockerfile --tag react-dashboard-api-image . `
+                        - ` sudo docker run --publish 4000:4000 --name react-dashboard-api react-dashboard-api-image `
+                        - That worked!
+                    - Running ` sudo docker compose up -d ` again.
+                        - That all works! API and website.
+                        - Making that 'src/api.py' change on the MS Surface 3.
+                            - Also the exposing the port in *docker-compose.yml*.
+                        - ` sudo docker system prune --all --force `
+                        - ` sudo docker compose up -d `
+                        - That worked perfectly!
+        - That means that something went wrong on the RPi. The MS Surface 3 doesnt even have Python packages like psutil installed
+            - The best bet is probably to lock the package versions in *requirements.txt* and then leave it the same.
+            - Connecting to the react_dashboard-api-1 container on the laptop
+                - ` sudo docker exec -it react_dashboard-api-1 sh `
+                - ` pip list `
+                - Updated requirements.txt with versions
+        - Set the container names in the *docker-compose.yml* file.
+69. Looking into DietPi
+    - Lightweight. Could improve the RPi speeds
+    - Running on Gnome Boxes
+        - Downloaded [here](https://dietpi.com/#downloadinfo) for "Native PC for BIOS/CSM"
+        - Run it (10GB storage and 2GB RAM)
+    - Easy to install software in the DietPi Software centre
+        - ` dietpi-software `
+    - A cool dashboard to see system:
+        - http://<your.IP>:5252
+    - Desktop looks good
+        - Lots of options. Im using Xfce
+    - Customising the Desktop
+        - xfce-look.org
+            - Downloading Orchis gtk theme
+            - ` apt install xz-utils `
+            - ` tar -xf Orchis.tar.xz `
+        - Nevermind, just need to add the .tar.xz file
+            - Setings -> Appearance -> Style -> +Add
+        - Adding Tela icons
+            - Same process
+        - Changing the background
+        - Looks really clean!
 
 
 - TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?

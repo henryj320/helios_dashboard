@@ -1,11 +1,15 @@
 version: "3.9"
 services:
   api:
+    container_name: react-dashboard-api
     build:
       context: ./
       dockerfile: api.Dockerfile
+    ports:
+      - "4000:4000"
 
   website:
+    container_name: react-dashboard-website
     build:
       context: ./react_dashboard_app/
       dockerfile: website.Dockerfile
