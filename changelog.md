@@ -868,6 +868,65 @@ SyntaxError: Unexpected token (53:40)
             - Same process
         - Changing the background
         - Looks really clean!
+70. Comparing the power of devices.
+    - CPU
+        - Commands
+            - ` sudo apt install sysbench `
+            - ` sysbench --test=cpu --cpu-max-prime=20000 run `
+        - Single-threaded version
+        - Laptop (Ubuntu 22.04 Plasma X11)
+            - Events per second: 753.85
+            - Total time: 10.0012s
+            - Total number of Events: 7541
+            - Avg latency: 1.32 ms
+        - Raspberry Pi 3 Model B (Armbian 23.02.2 Jammy)
+            - Events per second: 232.73
+            - Total time: 10.0043s
+            - Total number of Events: 2330
+            - Avg latency: 4.29 ms
+    - Storage
+        - Commands
+            - ` sysbench --test=fileio --file-total-size=10G prepare `
+            - ` sysbench --test=fileio --file-total-size=10G --file-test-mode=rndrw --max-time=300 --max-requests=0 run `
+            - ` sysbench --test=fileio --file-total-size=10G cleanup `
+        - Laptop (Ubuntu 22.04 Plasma X11)
+            - Reads/s: 2612.29
+            - Writes/s: 1741.53
+            - Fsyncs: 5573.27
+            - Total time: 300.0109s
+            - Total number of events: 2978121
+            - Avg latency: 0.10 ms
+        - Raspberry Pi 3 Model B (Armbian 23.02.2 Jammy)
+            - Had to do GB, not 10GB
+            - Reads/s: 86.95
+            - Writes/s: 57.97
+            - Fsyncs: 185.74
+            - Total time: 300.1456s
+            - Total number of events: 99124
+            - Avg latency: 3.02 ms
+    - Basic monitoring
+        - ` armbianmonitor -M `
+        - System load: 26%
+        - Memory load: 36% of 734MB
+        - Storage: 39% of 15GB
+71. Trying to run the Dashboard on RPi
+    - Even in DietPi, still getting "error: command 'gcc' failed. No such file or directory"
+    - Running the flask app traditionally
+        - Running the virtual environment
+            - ` sudo apt-get install python3-venv `
+            - ` python3 -m venv venv `
+            - ` . ./venv/bin/activate `
+        - Fixing the locations to work when not using Docker
+            - Changing paths in:
+                - api.py
+                - muscle_checker_script.py
+        - Installing everything inside the VE
+            - ` pip install flask flask_restful flask_cors psutil `
+                - Failed with psutil
+        - Means that I cant run it traditionally either
+    - Just going to have to run the app with no API...
+        - Nope. That failed with an error about CHOKIDAR
+    - Might just have to accept that the Raspberry Pi is dead now
 
 
 - TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?

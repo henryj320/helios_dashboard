@@ -25,9 +25,17 @@ View the [changelog](changelog.md) here.
 ## Running the Project
 
 ### With Docker
-The preferred way to run the React Dashboard is using Docker. This will start up two containers - one for the API and another for the website itself. To run the React Dashboard, simply ` cd ` to the correct directory and then run **` sudo docker compose up -d `**. This will run each of the containers in detached mode (so that they are not attached to a terinal).
+The preferred way to run the React Dashboard is using Docker. This will start up two containers - one for the API and another for the website itself.
 
-Before running the containers, you will need to change the IP within the *docker-compose.yml* file. If you don't, a "cannot assign requested address" error will be raised.
+Before running the containers, you will need to change the IP within the following files:
+
+- docker-compose.yml
+- src/components/Rpi_health/Rpi_health.js
+- src/pages/Muscle_checker.js
+
+If you don't change the IP, a "cannot assign requested address" error will be raised and the website will not link properly to the API. Note that there are plans in place to change "base_url" to be an environment variable to make this process easier.
+
+To run the React Dashboard, simply ` cd ` to the correct directory and then run **` sudo docker compose up -d `**. This will run each of the containers in detached mode (so that they are not attached to a terinal).
 
 To stop the containers, run **` sudo docker compose down `** in the same directory. This will stop all of the containers and delete them. You can check that they are deleted with ` sudo docker ps -a `
 
