@@ -73,7 +73,7 @@ export const Muscle_checker = () => {
     // Asynchronous method to get the data from the API.
     const getResponse = async () => {
 
-        let base_url = 'http://192.168.1.101:4000/muscle_checker';
+        let base_url = 'http://192.168.1.101:1004/muscle_checker';
 
         var requestData = {
             "text": textInput

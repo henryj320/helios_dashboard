@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: api.Dockerfile
     ports:
-      - "4000:4000"
+      - "1004:1004"
 
   website:
     container_name: react-dashboard-website
@@ -14,4 +14,4 @@ services:
       context: ./react_dashboard_app/
       dockerfile: website.Dockerfile
     ports:
-      - "192.168.1.101:3001:3000"
+      - "192.168.1.101:1003:3000"

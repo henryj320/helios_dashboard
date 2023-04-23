@@ -31,7 +31,7 @@ export default function Rpi_health() {
 
     const getResponse = async () => {
 
-        let base_url = 'http://192.168.1.101:4000/rpi_health';
+        let base_url = 'http://192.168.1.101:1004/rpi_health';
 
         var headers = {
             'Content-Type': 'application/json'

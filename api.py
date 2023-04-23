@@ -77,4 +77,4 @@ api.add_resource(Rpi_health, '/rpi_health')
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="4000")  # Runs the Flask app.
+    app.run(host="0.0.0.0", port="1004")  # Runs the Flask app.
