@@ -26,7 +26,7 @@ var theme = themeLight;
 
 export const Home = () => {
 
-    document.title = 'React Dashboard';
+    document.title = 'Helios Dashboard';
 
     // Currently unused, but will be used to change theme on button press:
     // useEffect(

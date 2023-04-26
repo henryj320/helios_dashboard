@@ -1,8 +1,8 @@
-# react_dashboard
+# helios_dashboard
 Last update: 2023-04-26 21:46
 <br><br>
 
-## Changelog for react_dashboard
+## Changelog for helios_dashboard
 
 ### Sprint 1
 
