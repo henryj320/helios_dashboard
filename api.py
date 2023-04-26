@@ -1,12 +1,12 @@
-"""API called in React Dashboard for Rpi_Health and Muscle_Checker."""
+"""API called in React Dashboard for sysvis and Muscle_Checker."""
 
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
 
-import react_dashboard_app.scripts.muscle_checker.muscle_checker_script as mc
+import helios_dashboard_app.scripts.muscle_checker.muscle_checker_script as mc
 
-import react_dashboard_app.scripts.rpi_health.rpi_health as rh
+import helios_dashboard_app.scripts.sysvis.sysvis as rh
 
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ class Muscle_checker(Resource):
         """GET the JSON response from muscle_checker."""
         # Runs muscle_checker and sets data to the output JSON.
         # data = mc.run('./scripts/muscle_checker/insert_calendar_text.txt')
-        data = mc.run('react_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt')
+        data = mc.run('helios_dashboard_app/scripts/muscle_checker/insert_calendar_text.txt')
 
         return {'data': data}, 200  # 200 OK code.
 
@@ -53,8 +53,8 @@ class Muscle_checker(Resource):
 api.add_resource(Muscle_checker, '/muscle_checker')  # Links the class to the /muscle_checker endpoint.
 
 
-class Rpi_health(Resource):
-    """A class to contain the GET, POST, DELETE and PUT HTTP methods for the RPI_health script.
+class sysvis(Resource):
+    """A class to contain the GET, POST, DELETE and PUT HTTP methods for the sysvis script.
 
     Args:
         Resource (_type_): Lets Flask know that this class in an endpoint.
@@ -73,7 +73,7 @@ class Rpi_health(Resource):
         return {'data': data}, 200  # 200 OK code.
 
 
-api.add_resource(Rpi_health, '/rpi_health')
+api.add_resource(sysvis, '/sysvis')
 
 
 if __name__ == '__main__':

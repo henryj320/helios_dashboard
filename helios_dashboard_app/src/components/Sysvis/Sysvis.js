@@ -3,14 +3,14 @@ import { useEffect } from "react";
 
 import axios from 'axios'
 
-import health_cpu from '../../assets/images/rpi_health/health_cpu.png'
-import health_ip from '../../assets/images/rpi_health/health_ip.png'
-import health_temperature from '../../assets/images/rpi_health/health_temperature.png'
-import health_memory_percentage from '../../assets/images/rpi_health/health_memory_percentage.png'
-import health_memory from '../../assets/images/rpi_health/health_memory.png'
-import health_uptime from '../../assets/images/rpi_health/health_uptime.png'
+import health_cpu from '../../assets/images/sysvis/health_cpu.png'
+import health_ip from '../../assets/images/sysvis/health_ip.png'
+import health_temperature from '../../assets/images/sysvis/health_temperature.png'
+import health_memory_percentage from '../../assets/images/sysvis/health_memory_percentage.png'
+import health_memory from '../../assets/images/sysvis/health_memory.png'
+import health_uptime from '../../assets/images/sysvis/health_uptime.png'
 
-export default function Rpi_health() {
+export default function sysvis() {
 
     useEffect(
         () => {
@@ -18,7 +18,7 @@ export default function Rpi_health() {
         }, []  // Runs repeatedly without "[]"
     )
 
-    // State that contains all the rpi_health data in a dict.
+    // State that contains all the sysvis data in a dict.
     const [apiData, setData] = useState({
         datetime: [],
         cpu_percent: "",
@@ -31,7 +31,7 @@ export default function Rpi_health() {
 
     const getResponse = async () => {
 
-        let base_url = 'http://192.168.1.101:1004/rpi_health';
+        let base_url = 'http://192.168.1.101:1004/sysvis';
 
         var headers = {
             'Content-Type': 'application/json'

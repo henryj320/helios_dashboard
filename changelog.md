@@ -1,5 +1,5 @@
 # react_dashboard
-Last update: 2023-04-20 00:37
+Last update: 2023-04-26 21:46
 <br><br>
 
 ## Changelog for react_dashboard
@@ -927,6 +927,9 @@ SyntaxError: Unexpected token (53:40)
     - Just going to have to run the app with no API...
         - Nope. That failed with an error about CHOKIDAR
     - Might just have to accept that the Raspberry Pi is dead now
+72. Renamed "react_dashboard" to "helios_dashboard"
+    - Cleaning up the naming of all my repos.
+    - Replaced "Rpi_health" with "Sysvis".
 
 
 - TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?

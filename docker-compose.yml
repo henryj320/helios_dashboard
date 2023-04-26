@@ -1,17 +1,19 @@
 version: "3.9"
 services:
   api:
-    container_name: react-dashboard-api
+    container_name: helios-dashboard-api
     build:
       context: ./
       dockerfile: api.Dockerfile
     ports:
       - "1004:1004"
+    restart: unless-stopped
 
   website:
-    container_name: react-dashboard-website
+    container_name: helios-dashboard-website
     build:
-      context: ./react_dashboard_app/
+      context: ./helios_dashboard_app/
       dockerfile: website.Dockerfile
     ports:
       - "192.168.1.101:1003:3000"
+    restart: unless-stopped

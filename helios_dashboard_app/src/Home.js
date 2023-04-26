@@ -13,9 +13,9 @@ import github_logo from './assets/images/github_logo.png'
 import ggl_calendar_logo from './assets/images/ggl_calendar_logo.png'
 import youtube_logo from './assets/images/youtube_logo.png'
 import strava_logo from './assets/images/strava_logo.png'
-import health_logo from './assets/images/rpi_health/health_logo.png'
+import health_logo from './assets/images/sysvis/health_logo.png'
 
-import Rpi_health from './components/Rpi_health/Rpi_health';
+import Sysvis from './components/Sysvis/Sysvis';
 import Sidebar from './components/Sidebar/Sidebar';
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -192,7 +192,7 @@ export const Home = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <Rpi_health ></Rpi_health>
+                                <Sysvis ></Sysvis>
                             </Item>
                         </Grid>
                     </Grid>

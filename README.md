@@ -1,10 +1,10 @@
- # react_dashboard
-Last update: 2023-04-20 00:19
+ # helios_dashboard
+Last update: 2023-04-26 21:46
 <br><br>
 
-## react_dashboard
+## helios_dashboard
 
-**Title**: react_dashboard
+**Title**: helios_dashboard
 
 **Date Started**: 2023-01-08
 
@@ -30,7 +30,7 @@ The preferred way to run the React Dashboard is using Docker. This will start up
 Before running the containers, you will need to change the IP within the following files:
 
 - docker-compose.yml
-- src/components/Rpi_health/Rpi_health.js
+- src/components/Sysvis/Sysvis.js
 - src/pages/Muscle_checker.js
 
 If you don't change the IP, a "cannot assign requested address" error will be raised and the website will not link properly to the API. Note that there are plans in place to change "base_url" to be an environment variable to make this process easier.
@@ -45,7 +45,7 @@ If you want to remove the images generated, run ` sudo docker images ` and then 
 To run the project, follow these steps:
 
 #### Cloning the Repository
-First, ` git clone ` the repository. Open it in a terminal or IDE and ` cd ` into the "react_dashboad_app" directory.
+First, ` git clone ` the repository. Open it in a terminal or IDE and ` cd ` into the "helios_dashboad_app" directory.
 
 #### Running the React App
 You will need two terminals - one to run the React app and another to run the backend API. In one terminal, run the React app using the commands below:
