@@ -31,7 +31,7 @@ export default function sysvis() {
 
     const getResponse = async () => {
 
-        let base_url = 'http://192.168.1.101:1004/sysvis';
+        let base_url = 'http://192.168.1.102:1004/sysvis';
 
         var headers = {
             'Content-Type': 'application/json'

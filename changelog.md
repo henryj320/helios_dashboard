@@ -1,5 +1,6 @@
 # helios_dashboard
-Last update: 2023-04-26 21:46
+
+Last update: 2023-05-11 00:56
 <br><br>
 
 ## Changelog for helios_dashboard
@@ -884,6 +885,11 @@ SyntaxError: Unexpected token (53:40)
             - Total time: 10.0043s
             - Total number of Events: 2330
             - Avg latency: 4.29 ms
+        - NanoPi R6S (Ubuntu 22.04)
+            - Events per second: 997.40 (4.3x More)
+            - Total time: 10.0008s
+            - Total number of Events: 9977
+            - Avg latency: 1.00 ms
     - Storage
         - Commands
             - ` sysbench --test=fileio --file-total-size=10G prepare `
@@ -904,11 +910,24 @@ SyntaxError: Unexpected token (53:40)
             - Total time: 300.1456s
             - Total number of events: 99124
             - Avg latency: 3.02 ms
+        - NanoPi R6S (Ubuntu 22.04)
+            - Did the full 10GB
+            - Reads/s: 859.35 (9.9x Faster)
+            - Writes/s: 572.90  (9.9x Faster)
+            - Fsyncs: 1833.67
+            - Total time: 300.0169s
+            - Total number of events: 979707
+            - Avg latency: 0.30 ms (10.1x Faster)
     - Basic monitoring
-        - ` armbianmonitor -M `
-        - System load: 26%
-        - Memory load: 36% of 734MB
-        - Storage: 39% of 15GB
+        - Raspberry Pi
+            - ` armbianmonitor -M `
+            - System load: 26%
+            - Memory load: 36% of 734MB
+            - Storage: 39% of 15GB
+        - NanoPi
+            - ` htop `
+            - CPU: 1.3%
+            - Memory: 714 MB / 7.73 GB
 71. Trying to run the Dashboard on RPi
     - Even in DietPi, still getting "error: command 'gcc' failed. No such file or directory"
     - Running the flask app traditionally
@@ -930,6 +949,15 @@ SyntaxError: Unexpected token (53:40)
 72. Renamed "react_dashboard" to "helios_dashboard"
     - Cleaning up the naming of all my repos.
     - Replaced "Rpi_health" with "Sysvis".
-
-
-- TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?
+73. Rerunning Helios Dashboard on the laptop    
+    - Not using the NanoPi for now
+    - Changing the IP addresses everywhere
+    - ` sudo usermod -aG docker henry `
+    - ` sudo docker compose down `
+    - ` sudo docker compose build --no-cache `
+        - So that the changes are picked up
+    - ` sudo docker compose up -d `
+    - TODO: When loading the page, it calls the Rpi_health around 5 times. Why? Does it matter?
+74. Creating a Release
+    - I realise that I have no releases within this project, time to create one
+    - Created and filled a *releases.md* file.
