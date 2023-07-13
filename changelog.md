@@ -961,3 +961,10 @@ SyntaxError: Unexpected token (53:40)
 74. Creating a Release
     - I realise that I have no releases within this project, time to create one
     - Created and filled a *releases.md* file.
+    - Made a release v1.0.0
+        - Only the required files
+    - Testing that the release works
+        - ` docker compose down `
+        - ` docker compose build --no-cache `
+        - ` docker compose up -d `
+        - All working! And only 2.5MB

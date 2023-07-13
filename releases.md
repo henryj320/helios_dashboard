@@ -18,6 +18,6 @@ This project is dockerised within two containers (website and API) for easy star
 The Muscle Checker page and API are functional and state the muscles missed during a workout given that the workout details are provided in the correct format.
 
 #### Sysvis
-Also known as "Server Health", this section of the dashboard show the host system's current status. Specifically, it shows the: CPU usage, memory usage, temperature, uptime and
+Also known as "Server Health", this section of the dashboard show the host system's current status. Specifically, it shows the: CPU usage, memory usage, temperature, uptime and IP.
 
 ---
